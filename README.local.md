@@ -194,8 +194,8 @@ This project is open source and available under the [MIT License](LICENSE).
 **Madesh M**
 - Email: madesh6554@gmail.com
 - Location: Salem, Tamil Nadu, India
-- LinkedIn: [[LinkedIn]](https://linkedin.com/in/madesh-m-15037b273)
-- GitHub: [[GitHub]](https://github.com/madesh6554)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/madesh-m-15037b273)
+- GitHub: [GitHub](https://github.com/madesh6554)
 
 ---
 
