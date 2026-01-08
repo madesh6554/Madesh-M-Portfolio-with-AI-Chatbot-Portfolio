@@ -1,50 +1,43 @@
-# Deployment Notes
+# 🚀 Free Deployment Guide
 
-## Backend (Render)
+Follow these steps to host your portfolio with the AI Assistant for free.
 
-1.  **Environment Variables**:
-    - Add `OPENAI_API_KEY` (or `GEMINI_API_KEY`) to Render's environment variables.
-    - Ensure `PYTHON_VERSION` is set to 3.9+ (ChromaDB requirement).
+## 1. Backend (Host on [Render](https://render.com/))
 
-2.  **Build Command**:
-    - `pip install -r requirements.txt`
-    - **Important**: Render's free tier interacts with persistent disk storage differently. 
-    - For a simple persistent vector DB, `chromadb` writes to disk (`vectordb/`). On Render free tier, the disk is ephemeral (wiped on deploy).
-    - **Fix**: The `RAGEngine` in `rag.py` checks if the DB is empty on startup and re-ingests the `data/*.txt` files. This is fine for this size of data.
-    - **Persistent Storage**: If you want true persistence, add a "Disk" in Render settings and mount it to `/opt/render/project/src/backend/vectordb`.
+**Service Type**: Web Service
 
-3.  **Start Command**:
-    - `gunicorn app:app` (or `python app.py` for dev).
+1.  **Connect Repo**: Connect your GitHub repository.
+2.  **Root Directory**: `backend` (CRITICAL: Set this to `backend`)
+3.  **Environment Variables**:
+    - `HUGGINGFACE_API_KEY`: Your HuggingFace Token.
+    - `LLM_PROVIDER`: `huggingface`
+    - `PYTHON_VERSION`: `3.9.0`
+4.  **Runtime**: Python 3
+5.  **Build Command**: `pip install -r requirements.txt`
+6.  **Start Command**: `gunicorn app:app`
 
-## Frontend (Vercel)
+---
 
-1.  **Environment Variables**:
-    - `REACT_APP_API_URL`: Set this to your Render backend URL (e.g., `https://your-app.onrender.com`).
-    - **Update Code**: In `frontend/src/components/Chatbot.jsx`, currently the fetch URL is hardcoded to `http://localhost:5000`. 
-    - **Action Item**: Change line 36 of `Chatbot.jsx` to use the environment variable:
-      ```javascript
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-      const response = await fetch(`${apiUrl}/api/chatbot`, { ... });
-      ```
+## 2. Frontend (Host on [Vercel](https://vercel.com/))
 
-2.  **Build Settings**:
-    - Framework: Create React App
-    - Build Command: `npm run build`
-    - Output Directory: `build`
+1.  **Connect Repo**: Import your GitHub repository.
+2.  **Root Directory**: `frontend` (CRITICAL: Set this to `frontend`)
+3.  **Environment Variables**:
+    - `REACT_APP_API_URL`: Your Render backend URL (e.g., `https://your-api.onrender.com`)
+4.  **Framework Preset**: `Create React App`
+5.  **Build Command**: `npm run build`
+6.  **Output Directory**: `build`
 
-## Local Testing
+---
 
-1.  **Backend**:
-    ```bash
-    cd backend
-    pip install -r requirements.txt
-    set OPENAI_API_KEY=your_key
-    python app.py
-    ```
+## 💡 Important Notes
+- **Cold Starts**: Render's free tier spins down after inactivity. The first time you open the chatbot, it might take 30-60 seconds to wake up.
+- **Port**: Render automatically handles the port; you don't need to change anything in `app.py`.
+- **API URL**: Make sure your `REACT_APP_API_URL` DOES NOT have a trailing slash (e.g., use `...com` not `...com/`).
 
-2.  **Frontend**:
-    ```bash
-    cd frontend
-    npm install
-    npm start
-    ```
+---
+
+## ✅ Local Quick Start
+If you want to run it locally again:
+1. **Backend**: `cd backend && python app.py`
+2. **Frontend**: `cd frontend && npm start`
