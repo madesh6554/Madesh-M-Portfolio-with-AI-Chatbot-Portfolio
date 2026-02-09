@@ -1,9 +1,37 @@
-Madesh M is a Data Scientist and AI Engineer based in Salem, Tamil Nadu, India.
-He holds an M.Sc in Data Science and a B.Sc in Mathematics from Periyar University.
-Madesh is passionate about solving complex problems using Artificial Intelligence and Machine Learning.
-He has strong skills in Python, SQL, and Data Visualization tools like Tableau and Power BI.
-Madesh has built various projects ranging from image classification systems to real-time stock predictors.
-He is a quick learner and enjoys staying updated with the latest trends in AI technology.
-Email: madesh6554@gmail.com
-LinkedIn: https://linkedin.com/in/madesh-m-15037b273
-GitHub: https://github.com/madesh6554
+ABOUT MADESH M
+
+Personal Information:
+- Full Name: Madesh M
+- Location: Salem, Tamil Nadu, India
+- Email: madesh6554@gmail.com
+- LinkedIn: https://www.linkedin.com/in/madesh-m-15037b273
+- GitHub: https://github.com/madesh6554
+
+Professional Summary:
+Madesh M is an analytical and results-driven data professional with hands-on experience in data analysis, artificial intelligence, and machine learning. He specializes in building predictive models and AI-driven solutions. Recently, he served as an AI & Data Science Trainer under the Tamil Nadu Government's TNSDC Vetri Nichayam initiative, where he trained and mentored students in Artificial Intelligence, Machine Learning, and Data Science. He is passionate about transforming data into actionable insights and empowering the next generation of data professionals.
+
+Education (summary):
+Madesh holds M.Sc. Data Science from Periyar University, Salem (2023-2025) and B.Sc. Mathematics from Arignar Anna Government Arts College, Namakkal (2020-2023). Both degrees are completed.
+
+Background:
+Madesh's journey in data science began with his strong foundation in Mathematics at Arignar Anna Govt Arts College, Namakkal, which led him to pursue M.Sc. in Data Science at Periyar University, Salem. His mathematical background gives him a unique perspective on problem-solving and analytical thinking, making him effective at tackling complex data challenges.
+
+Passion & Interests:
+- Machine Learning & Deep Learning
+- Computer Vision & Image Processing
+- Natural Language Processing
+- Data Visualization & Analytics
+- AI Ethics & Responsible AI
+- Training and Mentoring students in AI/ML technologies
+
+Key Achievements:
+- Built multiple machine learning models with 90%+ accuracy
+- Developed computer vision applications using OpenCV and TensorFlow
+- Created interactive data visualization dashboards using Tableau
+- Contributed to open-source AI projects on GitHub
+- Trained and mentored students as AI & Data Science Trainer under Tamil Nadu Government program
+- Delivered structured technical sessions and hands-on workshops
+
+Languages:
+- English (Professional)
+- Tamil (Native)

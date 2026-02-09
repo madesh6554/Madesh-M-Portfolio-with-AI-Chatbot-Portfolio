@@ -1,0 +1,27 @@
+KEY FACTS - MADESH M
+
+Education:
+- M.Sc. Data Science from Periyar University, Salem (2023-2025). Completed.
+- B.Sc. Mathematics from Arignar Anna Government Arts College, Namakkal (2020-2023). Completed.
+
+Contact:
+- Email: madesh6554@gmail.com
+- LinkedIn: https://www.linkedin.com/in/madesh-m-15037b273
+- GitHub: https://github.com/madesh6554
+- Location: Salem, Tamil Nadu, India (Dharmapuri / Salem, Tamil Nadu)
+
+Current role:
+- AI & Data Science Trainer, TNSDC Vetri Nichayam Initiative (Dec 2025 – Feb 2026), Government of Tamil Nadu program with Edukators & Cultus Education.
+
+Experience (summary):
+- Data Visualization Intern, Cognitive i IT Solutions (Mar–Jul 2024)
+- AI & Data Science Intern, Oasis Infobyte (Jan 2024)
+- Satellite Systems Intern, Space Kids India (Aug 2024)
+- Intel oneAPI Skill Sprint, Boston Training Academy (Oct 2024)
+- Applied AI Fellowship, Boston Training Academy (Dec 2024)
+
+Projects (names for reference): AI ModelHub, AI-Powered Digital Twin for Satellite Health Monitoring, Smart Electronics Recommendation System, Image Caption Generator, Entertainment Industry Analysis, India Rainfall Analysis, Email Spam Detection, Car Price Prediction, Unemployment Analysis, Conversational AI Tutor (ongoing), Personal Portfolio Website. Full details and GitHub links are in the portfolio documents.
+
+Languages: English (Professional), Tamil (Native).
+
+When asked for code or repository: GitHub profile is https://github.com/madesh6554. Specific project repos are in the projects document.

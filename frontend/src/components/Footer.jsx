@@ -144,7 +144,7 @@ const Footer = () => {
               <span>and lots of ☕</span>
             </div>
 
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
+            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm text-gray-400 text-center sm:text-left">
               <span>Built with React & Tailwind CSS</span>
               <span>•</span>
               <span>Powered by AI & ML</span>

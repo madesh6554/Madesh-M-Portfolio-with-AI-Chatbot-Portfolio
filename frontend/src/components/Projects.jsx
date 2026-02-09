@@ -1412,10 +1412,10 @@ const Projects = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               My <span className="text-primary-600 dark:text-primary-400">Projects</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-2">
               A showcase of my completed work, ongoing projects, and upcoming ideas
             </p>
           </motion.div>

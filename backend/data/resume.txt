@@ -1,24 +1,225 @@
-EDUCATION:
-- M.Sc Data Science, Periyar University, Salem (2023-2025)
-- B.Sc Mathematics, Periyar University, Salem (2020-2023)
+MADESH M - COMPREHENSIVE RESUME
 
-TECHNICAL SKILLS:
-- Languages: Python, SQL, R, JavaScript
-- AI/ML: TensorFlow, PyTorch, Scikit-Learn, OpenCV, NLP, Computer Vision
-- Data Tools: Pandas, NumPy, Excel, Tableau, Power BI
-- Web: Flask, FastAPI, React, HTML/CSS
-- Tools: Git, VS Code, Jupyter Notebook
+=== EDUCATION (FULL DETAILS) ===
 
-EXPERIENCE:
-- Data Science Intern (Verify exact dates/company if applicable)
-  Worked on data cleaning, analysis, and model building.
-  Collaborated with senior team members on deployment.
+Madesh's education:
+- M.Sc. Data Science, Periyar University, Salem, Tamil Nadu. Duration: 2023-2025. Status: Completed. Specialization: machine learning, statistical analysis, data visualization.
+- B.Sc. Mathematics, Arignar Anna Government Arts College, Namakkal, Tamil Nadu. Duration: 2020-2023. Status: Completed. Focus: mathematical concepts and analytical thinking.
 
-CERTIFICATIONS:
-- Python for Data Science (IBM)
-- Machine Learning (Coursera)
-- Tableau Desktop Specialist
+1. M.Sc. Data Science
+   Institution: Periyar University, Salem, Tamil Nadu, India
+   Duration: 2023-2025
+   Status: Completed
+   Specialization: Machine learning, statistical analysis, and data visualization
+   Description: Specialized in machine learning, statistical analysis, and data visualization. Strong foundation in mathematical concepts and analytical thinking.
 
-LANGUAGES:
-- English (Professional)
+2. B.Sc. Mathematics
+   Institution: Arignar Anna Government Arts College, Namakkal, Tamil Nadu, India
+   Duration: 2020-2023
+   Status: Completed
+   Description: Strong foundation in mathematical concepts and analytical thinking
+
+=== PROFESSIONAL EXPERIENCE ===
+
+1. AI & Data Science Trainer
+   Company: TNSDC Vetri Nichayam Initiative
+   Organization: Edukators & Cultus Education | Government of Tamil Nadu Sponsored Program
+   Duration: December 2025 – February 2026
+   Location: Tamil Nadu, India
+   Type: Professional Role (Government Program)
+   
+   Description: Worked as an AI & Data Science Trainer under the Tamil Nadu Government's TNSDC Vetri Nichayam initiative, where I trained and mentored students in Artificial Intelligence, Machine Learning, and Data Science.
+   
+   Key Responsibilities:
+   - Delivered structured technical sessions on AI, ML, and Data Science fundamentals
+   - Conducted hands-on workshops and practical training sessions
+   - Guided students to build real-world AI/ML projects from conception to deployment
+   - Mentored students in hybrid mode (offline classroom sessions and online mentoring)
+   - Prepared students for technical assessments and placement opportunities
+   - Empowered students with practical industry-relevant skills
+   
+   Technologies: AI/ML, Data Science, Python, Machine Learning, Training & Mentoring
+
+2. Data Visualization Intern
+   Company: Cognitive i IT Solutions (P) Ltd
+   Duration: March 2024 – July 2024
+   Location: Remote
+   Type: Full-time Internship
+   
+   Description: Built interactive Tableau dashboards for movie industry analytics during a full-time internship, delivering client-ready data visualization solutions.
+   
+   Key Responsibilities:
+   - Developed interactive Tableau dashboards for movie industry analytics
+   - Created data visualization solutions for client delivery
+   - Performed data analysis and prepared insights for stakeholders
+   - Collaborated with team members on dashboard design and implementation
+   
+   Technologies: Tableau, Data Visualization, Dashboards, Client Delivery, Analytics
+
+3. AI & Data Science Intern
+   Company: Oasis Infobyte
+   Duration: January 2024
+   Location: Remote
+   Type: Internship
+   
+   Description: Completed data science internship tasks covering regression analysis, NLP applications, and dashboarding deliverables.
+   
+   Key Responsibilities:
+   - Implemented regression models for predictive analytics
+   - Developed NLP applications for text processing and analysis
+   - Created data visualization dashboards
+   - Completed end-to-end data science project deliverables
+   
+   Technologies: Python, Machine Learning, NLP, EDA, Regression, Data Science
+
+4. Satellite Systems Intern
+   Company: Space Kids India
+   Duration: August 2024
+   Location: Remote
+   Type: STEM Internship Program
+   
+   Description: Contributed to satellite telemetry simulations and outreach programmes as part of a STEM internship focused on space technology.
+   
+   Key Responsibilities:
+   - Worked on satellite telemetry simulations and data analysis
+   - Contributed to digital twin prototypes for satellite health monitoring
+   - Participated in STEM outreach and mentorship programs
+   - Developed technical documentation and project reports
+   
+   Technologies: Digital Twin, Telemetry, STEM, Satellite Systems, Simulations
+
+=== TRAINING PROGRAMS ===
+
+1. Intel® oneAPI Skill Sprint Participant
+   Company: Boston Training Academy
+   Duration: October 2024
+   Location: Hybrid
+   Type: High-Performance Computing Accelerator Program
+   
+   Description: Hands-on accelerator programme focusing on GPU offloading and high-performance analytics with Intel oneAPI tools.
+   
+   Key Learnings:
+   - GPU offloading techniques for high-performance computing
+   - Optimized analytics solutions using oneAPI
+   - Heterogeneous computing architectures
+   - Performance optimization techniques
+   
+   Technologies: oneAPI, Heterogeneous Compute, GPU Optimization, HPC, C++
+
+2. Applied AI Fellowship
+   Company: Boston Training Academy
+   Duration: December 2024
+   Location: Hybrid
+   Type: Capstone Fellowship Program
+   
+   Description: Capstone fellowship covering model deployment, optimisation pipelines, and enterprise AI delivery strategies.
+   
+   Key Learnings:
+   - Model deployment pipelines design and implementation
+   - Optimization strategies for AI models
+   - Enterprise AI delivery solutions
+   - End-to-end AI deployment capstone project
+   
+   Technologies: ModelOps, Deployment, MLOps, Enterprise AI, Capstone
+
+=== TECHNICAL SKILLS ===
+
+Programming Languages:
+- Python (95% proficiency) - Advanced
+- JavaScript/ES6+ (85% proficiency) - Advanced
+- TypeScript (70% proficiency) - Intermediate
+- SQL (90% proficiency) - Advanced
+- R (Basic knowledge)
+
+AI & Machine Learning:
+- TensorFlow / Keras (88% proficiency) - Advanced
+- PyTorch (Intermediate)
+- Scikit-Learn (92% proficiency) - Advanced
+- LangChain / LangGraph (80% proficiency) - Advanced
+- Vector DB (FAISS/Chroma) (78% proficiency) - Advanced
+- OpenCV (82% proficiency) - Advanced
+- Pandas (95% proficiency) - Expert
+- NumPy (92% proficiency) - Expert
+- NLP (Natural Language Processing)
+- Computer Vision
+- Deep Learning
+- Machine Learning Algorithms
+
+Data Visualization:
+- Tableau (88% proficiency) - Advanced
+- Plotly (82% proficiency) - Advanced
+- Matplotlib (86% proficiency) - Advanced
+- Seaborn (84% proficiency) - Advanced
+- Power BI (Intermediate)
+
+Web Development:
+- React / Next.js (85% proficiency) - Advanced
+- Tailwind CSS (88% proficiency) - Advanced
+- Flask / FastAPI (86% proficiency) - Advanced
+- HTML/CSS (Advanced)
+- Node.js / Express (70% proficiency) - Intermediate
+
+Data Tools & Databases:
+- MySQL / SQL Server (85% proficiency) - Advanced
+- SQLite (Advanced)
+- Excel (Advanced)
+- Jupyter Notebook / Google Colab (92% proficiency) - Expert
+
+Tools & Platforms:
+- Git & GitHub (88% proficiency) - Advanced
+- Streamlit (90% proficiency) - Advanced
+- Firebase (70% proficiency) - Intermediate
+- MediaPipe / Three.js (60% proficiency) - Basic
+- Whisper / TTS (ElevenLabs) (70% proficiency) - Intermediate
+- NVIDIA oneAPI / CUDA (65% proficiency) - Basic
+
+=== CERTIFICATIONS & ACHIEVEMENTS ===
+
+Internships & Programs:
+- Data Visualization Internship - Cognitive i IT Solutions (Mar-Jul 2024)
+- AI & Data Science Internship - Oasis Infobyte (Jan 2024)
+- Satellite Systems Internship - Space Kids India (Aug 2024)
+- Intel® oneAPI Skill Sprint - Boston Training Academy (Oct 2024)
+- Applied AI Fellowship - Boston Training Academy (Dec 2024)
+
+Courses & Specializations:
+- Data Analytics with Python - NPTEL SWAYAM (2024)
+- Preprocessing for Machine Learning - DataCamp (2024)
+- Intermediate Importing Data in Python - DataCamp (2024)
+- Intermediate SQL - DataCamp (2024)
+- Intermediate Python - DataCamp (2023)
+- Programming for Everybody (Python) - Coursera (2023)
+- Deep Learning Guided Project - Coursera (2024)
+- Natural Language Processing Specialisation - Coursera (2024)
+- SQL for Data Science - Coursera (2023)
+- Introduction to SQL Server - Great Learning (2023)
+- Introduction to Microsoft Excel - Great Learning (2023)
+- Introduction to ChatGPT - Analytics Vidhya (2024)
+- Introduction to Python - Analytics Vidhya (2024)
+- Introduction to SQL - Analytics Vidhya (2024)
+- Python for Data Science - Great Learning (2023)
+- Introduction to Generative AI - Analytics Vidhya (Sep 2024)
+- Persona Analytics Programme - Naan Mudhalvan (2024)
+
+Achievements & Badges:
+- Python Programming Badge - Kaggle (2024)
+- Intro to Deep Learning Badge - Kaggle (2024)
+- Intro to Programming Badge - Kaggle (2024)
+- AI NCAT Participation - Naukri Campus (May 2025)
+- NVIDIA Deep Learning Institute - NVIDIA (2024)
+- Tableau Data Visualisation Basics - Analytics Vidhya (2024)
+- Tata Group Data Analytics Virtual Experience - Forage | Tata Group (2024)
+- Advanced SQL Badge - Great Learning (2023)
+- Industrial Visit Insight - Kerala Tech Hub (2024)
+- Space Outreach Mentor - Space Kids India (2024)
+- Data Visualisation Excellence - Cognitive i IT Solutions (2024)
+
+=== LANGUAGES ===
+- English (Professional proficiency)
 - Tamil (Native)
+
+=== CONTACT INFORMATION ===
+- Email: madesh6554@gmail.com
+- LinkedIn: https://www.linkedin.com/in/madesh-m-15037b273
+- GitHub: https://github.com/madesh6554
+- Location: Salem, Tamil Nadu, India

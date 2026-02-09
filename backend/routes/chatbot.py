@@ -20,8 +20,8 @@ def chat():
         
     try:
         # 1. Retrieve relevant context
-        # We search for top 3 relevant chunks
-        context_chunks = rag_engine.query(user_message, n_results=3)
+        # We search for top 5 relevant chunks for more comprehensive answers
+        context_chunks = rag_engine.query(user_message, n_results=9)
         context_text = "\n\n".join(context_chunks)
         
         # 2. Format the system prompt

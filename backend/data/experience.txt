@@ -1,0 +1,147 @@
+PROFESSIONAL EXPERIENCE & INTERNSHIPS - MADESH M
+
+=== PROFESSIONAL ROLE ===
+
+1. AI & Data Science Trainer
+   Company: TNSDC Vetri Nichayam Initiative
+   Organization: Edukators & Cultus Education | Government of Tamil Nadu Sponsored Program
+   Duration: December 2025 – February 2026
+   Location: Tamil Nadu, India
+   Type: Professional Role (Government Program)
+   
+   Role Description:
+   Worked as an AI & Data Science Trainer under the Tamil Nadu Government's TNSDC Vetri Nichayam initiative. This was a government-sponsored program where I trained and mentored students in Artificial Intelligence, Machine Learning, and Data Science.
+   
+   Key Responsibilities:
+   - Delivered structured technical sessions on AI, ML, and Data Science fundamentals
+   - Conducted hands-on workshops and practical training sessions
+   - Guided students to build real-world AI/ML projects from conception to deployment
+   - Mentored students in hybrid mode (offline classroom sessions and online mentoring)
+   - Prepared students for technical assessments and placement opportunities
+   - Empowered students with practical industry-relevant skills
+   
+   Technologies Used: AI/ML, Data Science, Python, Machine Learning, Training & Mentoring
+   
+   Impact: Successfully trained and mentored students, preparing them for careers in AI and Data Science. The training was conducted in hybrid mode, including both offline classroom sessions and online mentoring.
+
+=== INTERNSHIPS ===
+
+1. Data Visualization Intern
+   Company: Cognitive i IT Solutions (P) Ltd
+   Duration: March 2024 – July 2024 (5 months)
+   Location: Remote
+   Type: Full-time Internship
+   
+   Role Description:
+   Built interactive Tableau dashboards for movie industry analytics during a full-time internship. Delivered client-ready data visualization solutions.
+   
+   Key Responsibilities:
+   - Developed interactive Tableau dashboards for movie industry analytics
+   - Created data visualization solutions for client delivery
+   - Performed data analysis and prepared insights for stakeholders
+   - Collaborated with team members on dashboard design and implementation
+   
+   Technologies Used: Tableau, Data Visualization, Dashboards, Client Delivery, Analytics
+   
+   Achievements: Created multiple client-ready dashboards, received recognition for data visualization excellence
+
+2. AI & Data Science Intern
+   Company: Oasis Infobyte
+   Duration: January 2024
+   Location: Remote
+   Type: Data Science Internship Program
+   
+   Role Description:
+   Completed data science internship tasks covering regression analysis, NLP applications, and dashboarding deliverables.
+   
+   Key Responsibilities:
+   - Implemented regression models for predictive analytics
+   - Developed NLP applications for text processing and analysis
+   - Created data visualization dashboards
+   - Completed end-to-end data science project deliverables
+   
+   Technologies Used: Python, Machine Learning, NLP, EDA, Regression, Data Science
+   
+   Projects Completed: Email Spam Detection, Car Price Prediction, Unemployment Analysis
+
+3. Satellite Systems Intern
+   Company: Space Kids India
+   Duration: August 2024
+   Location: Remote
+   Type: STEM Internship Program
+   
+   Role Description:
+   Contributed to satellite telemetry simulations and outreach programmes as part of a STEM internship focused on space technology.
+   
+   Key Responsibilities:
+   - Worked on satellite telemetry simulations and data analysis
+   - Contributed to digital twin prototypes for satellite health monitoring
+   - Participated in STEM outreach and mentorship programs
+   - Developed technical documentation and project reports
+   
+   Technologies Used: Digital Twin, Telemetry, STEM, Satellite Systems, Simulations
+   
+   Impact: Contributed to satellite health monitoring project, participated in STEM outreach programs
+
+=== TRAINING PROGRAMS ===
+
+1. Intel® oneAPI Skill Sprint Participant
+   Company: Boston Training Academy
+   Duration: October 2024
+   Location: Hybrid
+   Type: High-Performance Computing Accelerator Program
+   
+   Program Description:
+   Hands-on accelerator programme focusing on GPU offloading and high-performance analytics with Intel oneAPI tools.
+   
+   Key Learnings:
+   - GPU offloading techniques for high-performance computing
+   - Implemented optimized analytics solutions using oneAPI
+   - Explored heterogeneous computing architectures
+   - Completed hands-on projects on performance optimization
+   
+   Technologies: oneAPI, Heterogeneous Compute, GPU Optimization, HPC, C++
+   
+   Outcome: Gained expertise in high-performance computing and GPU optimization
+
+2. Applied AI Fellowship
+   Company: Boston Training Academy
+   Duration: December 2024
+   Location: Hybrid
+   Type: Capstone Fellowship Program
+   
+   Program Description:
+   Capstone fellowship covering model deployment, optimisation pipelines, and enterprise AI delivery strategies.
+   
+   Key Learnings:
+   - Designed and implemented model deployment pipelines
+   - Developed optimization strategies for AI models
+   - Created enterprise AI delivery solutions
+   - Completed capstone project on end-to-end AI deployment
+   
+   Technologies: ModelOps, Deployment, MLOps, Enterprise AI, Capstone
+   
+   Outcome: Completed comprehensive capstone project on enterprise AI deployment
+
+=== EXPERIENCE SUMMARY ===
+
+Total Professional Experience:
+- 1 Professional Role (AI & Data Science Trainer - Government Program)
+- 3 Internships (Data Visualization, AI & Data Science, Satellite Systems)
+- 2 Training Programs (oneAPI Skill Sprint, Applied AI Fellowship)
+
+Key Strengths:
+- Training and Mentoring: Successfully trained students in AI/ML technologies
+- Data Visualization: Expert in creating interactive dashboards and visualizations
+- Machine Learning: Strong background in ML model development and deployment
+- Project Management: Experience in end-to-end project delivery
+- Client Delivery: Experience delivering client-ready solutions
+- STEM Outreach: Participated in educational and outreach programs
+
+Industries Worked In:
+- Education & Training (Government Programs)
+- IT Solutions & Data Analytics
+- Space Technology & STEM
+- High-Performance Computing
+- Enterprise AI Solutions
+

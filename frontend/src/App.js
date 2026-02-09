@@ -5,17 +5,17 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import About from './components/About';
 import Skills from './components/Skills';
+import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
-import ScrollNavigation from './components/ScrollNavigation';
 import Chatbot from './components/Chatbot';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gray-50 dark:bg-dark-900 transition-colors duration-300">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-900 transition-colors duration-300 overflow-x-hidden">
         <Navbar />
 
         {/* Smooth scrolling sections */}
@@ -36,6 +36,10 @@ function App() {
             <Skills />
           </section>
 
+          <section id="experience">
+            <Experience />
+          </section>
+
           <section id="projects">
             <Projects />
           </section>
@@ -50,9 +54,6 @@ function App() {
         </motion.div>
 
         <Footer />
-
-        {/* Floating scroll navigation */}
-        <ScrollNavigation />
 
         {/* Personal AI Assistant */}
         <Chatbot />

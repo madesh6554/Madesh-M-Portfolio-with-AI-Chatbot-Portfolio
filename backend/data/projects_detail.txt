@@ -1,0 +1,84 @@
+PROJECTS - FULL DETAILS FOR AI ASSISTANT
+
+When someone asks about a specific project, use the information below. All projects are from Madesh's portfolio and GitHub. GitHub profile: https://github.com/madesh6554
+
+--- COMPLETED PROJECTS ---
+
+1. AI ModelHub
+   Description: A unified AI model-as-a-service platform that bridges cutting-edge AI technologies and real-world applications. Users can explore, test, and integrate AI models without complex infrastructure. Includes model exploration, one-click testing, API integration, Gemini Analyzer for media content, and Sign Translate for real-time sign language with 3D avatar.
+   Technologies: Python, Flask, Angular, Ionic, TensorFlow.js, MediaPipe, Three.js, Node.js, Express.js, Firebase, Google Gemini AI, OpenCV, yt-dlp, REST API
+   GitHub: https://github.com/madesh6554/AI-ModelHub
+   Live Demo: https://ai-modelhub.onrender.com/
+   Status: Completed and Deployed
+
+2. AI-Powered Digital Twin for Satellite Health Monitoring
+   Description: Digital twin system that simulates real-time satellite conditions and predicts issues using AI (Isolation Forest). Monitors 40+ telemetry parameters: power, thermal, navigation, communications, payload. Includes Streamlit dashboard, MySQL, automated email alerts, Plotly visualizations.
+   Technologies: Python, Streamlit, MySQL, Isolation Forest, Pandas, NumPy, Scikit-learn, Plotly, SMTP, Joblib
+   GitHub: https://github.com/madesh6554/Satellite-Health-Monitoring-DT
+   Live Demo: https://satellite-health-monitoring-dt-bom4jaf2gnukue8yizjeak.streamlit.app/
+   Status: Completed
+
+3. Smart Electronics Recommendation System
+   Description: AI-driven recommendation system for electronics using NLP (TF-IDF, cosine similarity) and FuzzyWuzzy. Content-based and rule-based filtering; suggests similar products and accessories. Built with Streamlit.
+   Technologies: Python, Streamlit, TF-IDF, Cosine Similarity, FuzzyWuzzy, Pandas, NumPy, Scikit-learn, NLP
+   GitHub: https://github.com/madesh6554/Smart-Electronics-Recommendation-System
+   Live Demo: https://smart-electronics-recommendation-system-cg6eyh2obhqeyju7vca6gn.streamlit.app/
+   Status: Completed. Academic project for M.Sc. Data Science, Periyar University.
+
+4. Image Caption Generator with Deep Learning
+   Description: End-to-end solution for automatic image caption generation using VGG16 for feature extraction and encoder-decoder with LSTM. Trained on Flickr 8k dataset. Streamlit web app for uploading images and generating captions.
+   Technologies: Python, TensorFlow, Keras, VGG16, LSTM, NLP, Computer Vision, Streamlit
+   GitHub: https://github.com/madesh6554/Image-Caption-Generater
+   Live Demo: https://image-caption-generater-3gxwy5jxjyhd38ihur2emv.streamlit.app/
+   Status: Completed. Mini project for M.Sc. Data Science, Periyar University.
+
+5. Entertainment Industry Analysis Report
+   Description: Data visualization project analyzing movie ratings (audience and critics), budgets, and releases by genre (2007-2011). Built with Tableau during internship at Cognitive i IT Solutions. Dashboard covers budget trends, rating correlation, genre release trends.
+   Technologies: Tableau, Tableau Prep, Excel
+   GitHub: https://github.com/madesh6554/Cognitive-i-IT-Solution-Internship-Project-
+   Tableau Demo: https://public.tableau.com/views/EntertainmentIndustryAnalysisProject/ProjectDashboard
+   Status: Completed during Cognitive i IT Solutions internship.
+
+6. India Rainfall Analysis
+   Description: Analysis of rainfall patterns across Indian states (1901-2017): long-term trends, seasonal variation, state-wise distribution, climate impact, extreme weather. Built with Tableau during Cognitive i IT Solutions internship.
+   Technologies: Tableau, Tableau Prep, Excel
+   GitHub: https://github.com/madesh6554/Cognitive-i-IT-Solution-Internship-Project-
+   Tableau Demo: https://public.tableau.com/app/profile/madesh.m7198/viz/IndiaRainAnalysis/Dashboard1
+   Status: Completed during internship.
+
+7. Email Spam Detection with Machine Learning
+   Description: Spam classifier using TF-IDF and logistic regression on SMS Spam Collection dataset. 96% accuracy, weighted F1 0.96. Oasis Infobyte internship task.
+   Technologies: Python, Pandas, NumPy, Scikit-learn, TF-IDF, Logistic Regression
+   GitHub: Code/notebook in portfolio. Dataset: Kaggle SMS Spam Collection.
+   Status: Completed. Oasis Infobyte internship.
+
+8. Car Price Prediction with Machine Learning
+   Description: Regression models for used car selling prices. Linear regression R² 0.89; Random Forest R² 0.94. EDA, feature engineering. Oasis Infobyte internship task.
+   Technologies: Python, Pandas, NumPy, Seaborn, Matplotlib, Scikit-learn, Linear Regression, Random Forest
+   GitHub: Notebook in portfolio. Dataset: Kaggle vehicle dataset from Cardekho.
+   Status: Completed. Oasis Infobyte internship.
+
+9. Unemployment Analysis with Python
+   Description: EDA of India unemployment trends (Jan–Nov 2020). Regional patterns, geospatial visualization, Seaborn and Plotly. Oasis Infobyte internship task.
+   Technologies: Python, Pandas, NumPy, Seaborn, Matplotlib, Plotly
+   GitHub: Notebook in portfolio. Dataset: Kaggle unemployment in India.
+   Status: Completed. Oasis Infobyte internship.
+
+10. Personal Portfolio Website
+    Description: This React portfolio site: projects, skills, experience, certificates, dark mode, AI assistant. Flask backend, SQLite.
+    Technologies: React, Tailwind CSS, Framer Motion, Flask, SQLite
+    Status: Completed and live.
+
+--- ONGOING PROJECTS ---
+
+1. Conversational AI Tutor (RAG + STT/TTS Mascot)
+   Description: RAG-powered conversational tutor with speech-to-text, text-to-speech, and animated mascot. Backend: LangChain/LangGraph, vector DB. Single-turn and multi-turn API; emotion-aware responses.
+   Technologies: Python, FastAPI, LangChain/LangGraph, Chroma/FAISS, Whisper STT, ELEVEN TTS, React
+   GitHub: https://github.com/madesh6554/conversational-AI-tutor-RAG-
+   Status: In Progress
+
+--- GITHUB AND LINKS ---
+Main GitHub: https://github.com/madesh6554
+Tableau Public: https://public.tableau.com/app/profile/madesh.m7198
+LinkedIn: https://www.linkedin.com/in/madesh-m-15037b273
+Portfolio (this site) showcases all projects; code and demos are on GitHub and linked in the Projects section.

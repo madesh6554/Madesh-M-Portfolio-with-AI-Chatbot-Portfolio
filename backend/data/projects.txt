@@ -1,24 +1,124 @@
-1. AI-Powered Image Classification System:
-A deep learning model using CNN architecture to classify images into 1000 categories.
-Tech Stack: Python, TensorFlow, OpenCV, Flask.
-Key Features: High accuracy, real-time processing, web interface.
+PROJECTS BY MADESH M
 
-2. Real-time Stock Price Predictor:
-An LSTM-based neural network model for predicting stock prices.
-Tech Stack: Python, PyTorch, Pandas, Streamlit.
-Key Features: Real-time data fetching, interactive dashboard, historical data analysis.
+=== COMPLETED PROJECTS ===
 
-3. Customer Sentiment Analysis Dashboard:
-NLP application for analyzing customer reviews.
-Tech Stack: Python, NLTK, Scikit-learn, FastAPI, Tableau.
-Key Features: Sentiment classification, topic modeling, visual insights.
+1. AI ModelHub
+Description: An intern-led prototype of a unified AI model-as-a-service platform that bridges the gap between cutting-edge AI technologies and real-world applications. The platform empowers researchers, developers, students, and businesses to explore, test, and integrate state-of-the-art AI models without complex infrastructure.
 
-4. Data Visualization Portfolio:
-A collection of interactive dashboards.
-Tech Stack: Tableau, SQL, Excel.
-Key Features: Sales analytics, demographic insights, trend analysis.
+Technologies: Python, Flask, Angular, Ionic, TensorFlow.js, MediaPipe, Three.js, Node.js, Express.js, Firebase, Google Gemini AI, OpenCV, yt-dlp, REST API
 
-5. Personal Portfolio Website:
-This very website! A modern React app.
-Tech Stack: React, Tailwind CSS, Flask Backend.
-Key Features: Responsive design, dark mode, project showcase.
+Key Features:
+- Model Exploration: Discover curated cutting-edge AI models across various domains
+- One-click Testing: Instantly test models with sample or user-provided data
+- API Integration: Easily integrate models into applications using pre-configured APIs
+- Community & Collaboration: Interact with users, share projects, and get support
+- Multiple Model Categories: Support for Audio AI, NLP, Multimodal AI, Computer Vision, and Generative AI
+- Gemini Analyzer: Media content analysis for images, videos, and YouTube content using Google Gemini 1.5 Flash
+- Sign Translate: Real-time sign language translation system with 3D avatar visualization
+- Scalable Architecture: Built to handle growing user demands
+- User-Friendly Interface: No complex setup required
+
+GitHub: https://github.com/madesh6554/AI-ModelHub
+Demo: https://ai-modelhub.onrender.com/
+Status: Completed and Deployed
+
+2. AI-Powered Digital Twin for Satellite Health Monitoring
+Description: A prototype digital twin system that simulates real-time satellite conditions and predicts potential issues using AI models trained on satellite telemetry data. The system includes real-time monitoring, predictive analytics for anomaly detection, interactive Streamlit dashboard, automated email alert system, and comprehensive visualization.
+
+Technologies: Python, Streamlit, MySQL, Isolation Forest, Pandas, NumPy, Scikit-learn, Plotly, SMTP, Joblib, Machine Learning, Digital Twin, Anomaly Detection, Real-time Monitoring
+
+Key Features:
+- Real-time Satellite Health Monitoring: Continuous monitoring of 40+ telemetry parameters
+- Predictive Analytics: AI-powered anomaly detection using Isolation Forest algorithm
+- Interactive Dashboard: Streamlit-based interactive dashboard with real-time updates
+- Automated Alert System: Email notifications for critical anomalies and failures
+- Comprehensive Visualization: Real-time charts and metrics visualization using Plotly
+- MySQL Database Integration: Real-time data storage and retrieval
+- Multi-Parameter Monitoring: Power systems, thermal systems, navigation, communications, and payload
+- Anomaly Detection: Identifies power anomalies, thermal anomalies, AOCS faults, and payload failures
+
+Monitored Parameters:
+- Power Systems: Battery voltage/current, solar panel efficiency, power consumption
+- Thermal Systems: Internal temperature, battery temp, radiator efficiency
+- Navigation: Position, velocity, gyroscope, orientation
+- Communications: Signal strength, data rate, packet loss, latency
+- Payload: Payload power, sensor data rate, camera temperature, data quality
+
+GitHub: https://github.com/madesh6554/Satellite-Health-Monitoring-DT
+Demo: https://satellite-health-monitoring-dt-bom4jaf2gnukue8yizjeak.streamlit.app/
+Status: Completed
+
+3. Email Spam Detection
+Description: Machine learning project for detecting spam emails using various classification algorithms. Includes data preprocessing, feature engineering, model training, and evaluation.
+
+Technologies: Python, Scikit-learn, Pandas, NumPy, NLP, Machine Learning
+Status: Completed
+
+4. Car Price Prediction
+Description: Regression model for predicting car prices based on various features like brand, model, year, mileage, and other attributes. Includes exploratory data analysis and visualization.
+
+Technologies: Python, Scikit-learn, Pandas, Matplotlib, Seaborn, Regression Analysis
+Status: Completed
+
+5. Unemployment Analysis
+Description: Data analysis project analyzing unemployment trends, patterns, and factors affecting employment rates. Includes comprehensive visualizations and statistical analysis.
+
+Technologies: Python, Pandas, Matplotlib, Seaborn, Data Analysis, Statistics
+Status: Completed
+
+6. Movie Recommendation System
+Description: AI-powered recommendation system for movies using collaborative filtering and content-based filtering techniques.
+
+Technologies: Python, Scikit-learn, Pandas, Recommendation Systems, Machine Learning
+Status: Completed
+
+7. Image Caption Generation
+Description: Deep learning project for generating captions for images using CNN and LSTM architectures.
+
+Technologies: Python, TensorFlow, Keras, CNN, LSTM, Computer Vision, NLP
+Status: Completed
+
+8. Entertainment Industry Analytics Dashboard
+Description: Data visualization dashboard analyzing trends in the entertainment industry including movies, TV shows, and streaming content.
+
+Technologies: Tableau, Python, Pandas, Data Visualization
+Status: Completed
+
+9. Rainfall Analysis
+Description: Time series analysis and prediction of rainfall patterns using historical weather data.
+
+Technologies: Python, Pandas, Time Series Analysis, Statistical Modeling
+Status: Completed
+
+10. Personal Portfolio Website
+Description: Modern React-based portfolio website showcasing projects, skills, experience, and achievements. Features responsive design, dark mode, and interactive UI.
+
+Technologies: React, Tailwind CSS, Framer Motion, Flask Backend, SQLite
+Status: Completed and Live
+
+=== ONGOING PROJECTS ===
+
+1. Conversational AI Tutor (RAG + STT/TTS Mascot)
+Description: Building a RAG-powered conversational tutor with speech recognition, text-to-speech, animated mascot UI, and live API integration. The system delivers an end-to-end conversational AI tutor with a RAG API (single-turn and multi-turn) using LangChain/LangGraph with a vector database for retrieval.
+
+Technologies: Python, FastAPI, LangChain/LangGraph, Vector DB (Chroma/FAISS), OpenAI/Whisper STT, Google/ELEVEN TTS, React, Web Audio API, Lottie/Canvas Animations
+
+Key Features:
+- RAG Pipeline: document ingestion, chunking, embeddings, retrieval, and LLM synthesis
+- REST Endpoints: POST /query for single-turn, POST /chat for multi-turn sessions
+- Emotion-aware Responses: API returns { text, emotion } to drive animations
+- Speech-to-Text: microphone input transcribed via STT and sent to API
+- Text-to-Speech: answers spoken via TTS with mouth animation
+- Mascot UI: basic mouth movement and expression state (happy/thinking/explaining)
+- Live API Wiring: real-time calls to backend
+
+GitHub: https://github.com/madesh6554/conversational-AI-tutor-RAG-
+Status: In Progress
+
+=== UPCOMING PROJECT IDEAS ===
+
+1. Real-time Stock Price Predictor using LSTM
+2. Customer Sentiment Analysis Dashboard with NLP
+3. Advanced Computer Vision Applications
+4. MLOps Pipeline for Model Deployment
+5. Large Language Model Fine-tuning Projects

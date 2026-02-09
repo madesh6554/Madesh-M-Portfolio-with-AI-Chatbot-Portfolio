@@ -1,0 +1,18 @@
+EDUCATION - MADESH M
+
+Madesh M's full education details are as follows.
+
+Degree 1 - Master of Science (M.Sc.) in Data Science
+Institution: Periyar University, Salem, Tamil Nadu, India
+Duration: 2023 to 2025
+Status: Completed
+Specialization: Machine learning, statistical analysis, and data visualization
+Description: Madesh completed his M.Sc. in Data Science at Periyar University, Salem. The programme focused on machine learning, statistical analysis, and data visualization. This degree built on his mathematics background and gave him a strong foundation for a career in AI and data science.
+
+Degree 2 - Bachelor of Science (B.Sc.) in Mathematics
+Institution: Arignar Anna Government Arts College, Namakkal, Tamil Nadu, India
+Duration: 2020 to 2023
+Status: Completed
+Description: Madesh completed his B.Sc. in Mathematics from Arignar Anna Govt Arts College, Namakkal. This degree provided a strong foundation in mathematical concepts and analytical thinking, which later supported his transition into data science and machine learning.
+
+Summary: Madesh has two degrees. His highest qualification is M.Sc. Data Science from Periyar University, Salem (2023-2025). His undergraduate degree is B.Sc. Mathematics from Arignar Anna Government Arts College, Namakkal (2020-2023). Both degrees are completed. He is based in Salem, Tamil Nadu, India.

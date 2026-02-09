@@ -71,10 +71,10 @@ const About = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               About <span className="text-primary-600 dark:text-primary-400">Me</span>
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-base sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-2">
               Get to know more about my journey, education, and passion for AI & Data Science
             </p>
           </motion.div>
@@ -82,7 +82,7 @@ const About = () => {
           {/* Bio Section */}
           <motion.div variants={itemVariants} className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
                 My Story
               </h2>
               <div className="space-y-4 text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -99,10 +99,17 @@ const About = () => {
                   data challenges.
                 </p>
                 <p>
+                  Recently, I had the privilege of serving as an AI & Data Science Trainer under the Tamil Nadu 
+                  Government's TNSDC Vetri Nichayam initiative, where I trained and mentored students in 
+                  Artificial Intelligence, Machine Learning, and Data Science. This experience allowed me to 
+                  combine my technical expertise with my passion for education, delivering structured technical 
+                  sessions and hands-on workshops to empower the next generation of data professionals.
+                </p>
+                <p>
                   I'm passionate about leveraging artificial intelligence and machine learning to solve 
-                  real-world problems. When I'm not analyzing data, you can find me exploring new 
-                  mathematical concepts, working on innovative projects, or continuously learning about 
-                  the latest developments in AI and data science.
+                  real-world problems. When I'm not analyzing data or training students, you can find me 
+                  exploring new mathematical concepts, working on innovative projects, or continuously learning 
+                  about the latest developments in AI and data science.
                 </p>
               </div>
             </div>

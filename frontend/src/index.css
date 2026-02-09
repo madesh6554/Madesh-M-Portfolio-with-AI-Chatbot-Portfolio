@@ -6,11 +6,20 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px; /* Account for fixed navbar */
+    scroll-padding-top: 80px;
+    -webkit-text-size-adjust: 100%;
   }
-  
+
   body {
     @apply font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Safe area for notched phones */
+  @supports (padding: env(safe-area-inset-bottom)) {
+    body {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
   }
   
   /* Custom scrollbar */
@@ -45,7 +54,7 @@
   }
   
   .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    @apply py-12 px-4 sm:py-16 sm:px-6 lg:px-8;
   }
 
   .glass-elevate {

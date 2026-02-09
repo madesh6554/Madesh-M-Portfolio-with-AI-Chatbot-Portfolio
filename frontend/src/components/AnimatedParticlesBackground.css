@@ -1,0 +1,61 @@
+.animated-particles-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.circle-container {
+  position: absolute;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  background-image: radial-gradient(
+    var(--particle-color, hsl(180, 100%, 80%)),
+    var(--particle-color, hsl(180, 100%, 80%)) 10%,
+    hsla(180, 100%, 80%, 0) 56%
+  );
+  animation: fadein-frames 200ms infinite, scale-frames 2s infinite;
+}
+
+@keyframes fadein-frames {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+@keyframes scale-frames {
+  0% { transform: scale3d(0.4, 0.4, 1); }
+  50% { transform: scale3d(2.2, 2.2, 1); }
+  100% { transform: scale3d(0.4, 0.4, 1); }
+}
+
+/* Mobile: optimized for smaller screens */
+@media (max-width: 768px) {
+  .animated-particles-background {
+    /* Ensure proper rendering on mobile viewports */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Accessibility: reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .circle-container,
+  .circle {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .circle {
+    opacity: 0.6;
+  }
+}

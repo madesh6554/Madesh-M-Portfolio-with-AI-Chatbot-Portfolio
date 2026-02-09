@@ -208,7 +208,7 @@ const Chatbot = () => {
 
     return (
         // Changed "right-6" to "right-24" to move it leftwards away from the sidebar
-        <div ref={chatbotRef} className="fixed bottom-6 right-24 z-50 flex flex-col items-end gap-4 font-sans">
+        <div ref={chatbotRef} className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:right-24 z-50 flex flex-col items-end gap-4 font-sans">
 
             {/* ... Chat Window Logic (Same as before) ... */}
             <AnimatePresence>
@@ -219,7 +219,7 @@ const Chatbot = () => {
                         exit={{ opacity: 0, scale: 0.8, x: 20, y: 20 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
                         // Shifted the chat window to align with the new button position
-                        className="w-full max-w-[380px] md:w-96 rounded-2xl overflow-hidden shadow-2xl border border-[#3B82F6]/30 backdrop-blur-lg bg-black/80 flex flex-col h-[500px] origin-bottom-right"
+                        className="w-[calc(100vw-2rem)] max-w-[380px] md:w-96 rounded-2xl overflow-hidden shadow-2xl border border-[#3B82F6]/30 backdrop-blur-lg bg-black/80 flex flex-col h-[85vh] max-h-[500px] origin-bottom-right"
                     >
                         {/* Header */}
                         <div className="p-4 bg-gradient-to-r from-[#3B82F6] to-[#2563EB] flex justify-between items-center shadow-lg">
@@ -272,18 +272,42 @@ const Chatbot = () => {
                             ))}
 
                             {messages.length === 1 && (
-                                <div className="flex gap-2 mt-4 px-2">
+                                <div className="grid grid-cols-2 gap-2 mt-4 px-2">
                                     <button
                                         onClick={() => sendMessage("Tell me about Madesh.")}
                                         className="text-xs bg-[#3B82F6]/20 border border-[#3B82F6]/50 text-[#3B82F6] px-3 py-1.5 rounded-full hover:bg-[#3B82F6] hover:text-white transition-colors"
                                     >
-                                        Tell me about Madesh
+                                        About Madesh
                                     </button>
                                     <button
                                         onClick={() => sendMessage("What are his skills?")}
                                         className="text-xs bg-[#3B82F6]/20 border border-[#3B82F6]/50 text-[#3B82F6] px-3 py-1.5 rounded-full hover:bg-[#3B82F6] hover:text-white transition-colors"
                                     >
-                                        What are his skills?
+                                        Skills
+                                    </button>
+                                    <button
+                                        onClick={() => sendMessage("What is his professional experience?")}
+                                        className="text-xs bg-[#3B82F6]/20 border border-[#3B82F6]/50 text-[#3B82F6] px-3 py-1.5 rounded-full hover:bg-[#3B82F6] hover:text-white transition-colors"
+                                    >
+                                        Experience
+                                    </button>
+                                    <button
+                                        onClick={() => sendMessage("What projects has he worked on?")}
+                                        className="text-xs bg-[#3B82F6]/20 border border-[#3B82F6]/50 text-[#3B82F6] px-3 py-1.5 rounded-full hover:bg-[#3B82F6] hover:text-white transition-colors"
+                                    >
+                                        Projects
+                                    </button>
+                                    <button
+                                        onClick={() => sendMessage("What is his education background?")}
+                                        className="text-xs bg-[#3B82F6]/20 border border-[#3B82F6]/50 text-[#3B82F6] px-3 py-1.5 rounded-full hover:bg-[#3B82F6] hover:text-white transition-colors"
+                                    >
+                                        Education
+                                    </button>
+                                    <button
+                                        onClick={() => sendMessage("What certifications does he have?")}
+                                        className="text-xs bg-[#3B82F6]/20 border border-[#3B82F6]/50 text-[#3B82F6] px-3 py-1.5 rounded-full hover:bg-[#3B82F6] hover:text-white transition-colors"
+                                    >
+                                        Certifications
                                     </button>
                                 </div>
                             )}

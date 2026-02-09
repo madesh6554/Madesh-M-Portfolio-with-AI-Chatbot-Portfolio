@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, User, Code, Briefcase, Mail } from 'lucide-react';
+import { Home, User, Code, Briefcase, Mail, GraduationCap } from 'lucide-react';
 
 const ScrollNavigation = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -10,6 +10,7 @@ const ScrollNavigation = () => {
     { id: 'home', icon: Home, label: 'Home' },
     { id: 'about', icon: User, label: 'About' },
     { id: 'skills', icon: Code, label: 'Skills' },
+    { id: 'experience', icon: GraduationCap, label: 'Experience' },
     { id: 'projects', icon: Briefcase, label: 'Projects' },
     { id: 'contact', icon: Mail, label: 'Contact' },
   ];
@@ -55,11 +56,11 @@ const ScrollNavigation = () => {
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: 1 }}
-      className="fixed right-6 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block"
+      className="fixed right-4 top-1/2 z-40 hidden lg:flex flex-col items-center -translate-y-1/2 max-h-[min(90vh,420px)] py-4"
     >
-      <div className="flex flex-col items-center space-y-4">
+      <div className="flex flex-col items-center gap-2 overflow-y-auto overflow-x-visible scrollbar-thin min-h-0 flex-1">
         {/* Progress bar */}
-        <div className="w-1 h-32 bg-gray-200 dark:bg-dark-700 rounded-full overflow-hidden">
+        <div className="w-1 h-20 flex-shrink-0 bg-gray-200 dark:bg-dark-700 rounded-full overflow-hidden">
           <motion.div
             className="w-full bg-primary-600 dark:bg-primary-400 rounded-full"
             style={{ height: `${scrollProgress}%` }}
@@ -68,31 +69,31 @@ const ScrollNavigation = () => {
         </div>
 
         {/* Navigation dots */}
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col gap-2 flex-shrink-0">
           {sections.map((section) => {
             const Icon = section.icon;
             const isActive = activeSection === section.id;
-            
+
             return (
               <motion.button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
-                className={`relative group p-3 rounded-full transition-all duration-200 ${
+                className={`relative group p-2 rounded-full transition-all duration-200 flex-shrink-0 ${
                   isActive
                     ? 'bg-primary-600 dark:bg-primary-400 text-white'
                     : 'bg-gray-200 dark:bg-dark-700 text-gray-600 dark:text-gray-400 hover:bg-primary-500 dark:hover:bg-primary-500 hover:text-white'
                 }`}
                 title={section.label}
               >
-                <Icon size={20} />
+                <Icon size={18} />
                 
                 {/* Tooltip */}
                 <motion.div
                   initial={{ opacity: 0, x: 10 }}
                   whileHover={{ opacity: 1, x: 0 }}
-                  className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-2 py-1 rounded text-sm whitespace-nowrap pointer-events-none"
+                  className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-2 py-1 rounded text-xs whitespace-nowrap pointer-events-none z-50"
                 >
                   {section.label}
                 </motion.div>

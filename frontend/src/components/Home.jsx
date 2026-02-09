@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown, X, FileText, Briefcase, Brain, BarChart3, TrendingUp, CheckCircle, Cpu, Atom, Zap, Network, Sparkles } from 'lucide-react';
 import profileImage from '../assests/ChatGPT Image Jan 6, 2026, 04_11_57 PM.png';
+import AnimatedParticlesBackground from './AnimatedParticlesBackground';
 
 const Home = () => {
   const scrollToSection = (sectionId) => {
@@ -178,11 +179,16 @@ const Home = () => {
 
   return (
     <div
-      className="relative min-h-screen flex items-center justify-center section-padding"
+      className="relative min-h-screen flex items-center justify-center section-padding overflow-hidden"
       onMouseMove={handleHeroMouseMove}
       onMouseLeave={handleHeroMouseLeave}
     >
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <AnimatedParticlesBackground
+        particleCount={200}
+        backgroundColor="#021027"
+        particleColor="hsl(180, 100%, 80%)"
+      />
+      <div className="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 md:gap-12 items-center w-full px-2 sm:px-4">
         {/* 🔹 Left Content */}
         <motion.div
           variants={containerVariants}
@@ -192,7 +198,7 @@ const Home = () => {
         >
           <motion.div variants={itemVariants} className="space-y-4">
             <motion.h1
-              className="text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white"
+              className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -205,7 +211,7 @@ const Home = () => {
 
             {/* 🔹 Typewriter Animated Text */}
             <motion.p
-              className="text-xl lg:text-2xl text-primary-600 dark:text-primary-400 font-medium"
+              className="text-lg sm:text-xl lg:text-2xl text-primary-600 dark:text-primary-400 font-medium"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
@@ -215,14 +221,16 @@ const Home = () => {
             </motion.p>
 
             <motion.p
-              className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
               variants={itemVariants}
             >
               Analytical and results-driven data professional with hands-on
               experience in data analysis, artificial intelligence, and machine
               learning. Proficient in Python, SQL, and Excel, with a track
               record of building predictive models and AI-driven solutions.
-              Passionate about transforming data into actionable insights.
+              Recently served as an AI & Data Science Trainer under the Tamil Nadu Government's 
+              TNSDC Vetri Nichayam initiative, training and mentoring students in AI/ML technologies.
+              Passionate about transforming data into actionable insights and empowering the next generation of data professionals.
             </motion.p>
           </motion.div>
 
@@ -273,7 +281,7 @@ const Home = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex justify-center lg:justify-end"
         >
-          <div className="relative w-64 h-64 md:w-72 md:h-72">
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72">
             {/* Light Blue Glowing Ring - Outer Glow (blurred background) */}
             <motion.div
               animate={{ rotate: 360 }}
@@ -335,7 +343,7 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.button
           onClick={() => scrollToSection('about')}
