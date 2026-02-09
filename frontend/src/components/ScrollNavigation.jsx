@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Home, User, Code, Briefcase, Mail, GraduationCap } from 'lucide-react';
 
+const SECTIONS = [
+  { id: 'home', icon: Home, label: 'Home' },
+  { id: 'about', icon: User, label: 'About' },
+  { id: 'skills', icon: Code, label: 'Skills' },
+  { id: 'experience', icon: GraduationCap, label: 'Experience' },
+  { id: 'projects', icon: Briefcase, label: 'Projects' },
+  { id: 'contact', icon: Mail, label: 'Contact' },
+];
+
 const ScrollNavigation = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
-
-  const sections = [
-    { id: 'home', icon: Home, label: 'Home' },
-    { id: 'about', icon: User, label: 'About' },
-    { id: 'skills', icon: Code, label: 'Skills' },
-    { id: 'experience', icon: GraduationCap, label: 'Experience' },
-    { id: 'projects', icon: Briefcase, label: 'Projects' },
-    { id: 'contact', icon: Mail, label: 'Contact' },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,8 +24,8 @@ const ScrollNavigation = () => {
 
       // Update active section
       const scrollPosition = scrollTop + 200;
-      
-      for (const section of sections) {
+
+      for (const section of SECTIONS) {
         const element = document.getElementById(section.id);
         if (element) {
           const { offsetTop, offsetHeight } = element;
@@ -39,7 +39,7 @@ const ScrollNavigation = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -70,7 +70,7 @@ const ScrollNavigation = () => {
 
         {/* Navigation dots */}
         <div className="flex flex-col gap-2 flex-shrink-0">
-          {sections.map((section) => {
+          {SECTIONS.map((section) => {
             const Icon = section.icon;
             const isActive = activeSection === section.id;
 

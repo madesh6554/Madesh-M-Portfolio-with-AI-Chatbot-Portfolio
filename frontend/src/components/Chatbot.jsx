@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { Send, X, Minimize2, MessageSquare, Loader2 } from 'lucide-react';
-
-const LOKI_ORANGE = '#1900ffff';
+import { Send, Minimize2, MessageSquare, Loader2 } from 'lucide-react';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -20,17 +18,20 @@ const Chatbot = () => {
     const controls = useAnimation();
 
     // --- IDLE / SLEEP LOGIC ---
-    const resetIdleTimer = () => {
-        if (isSleeping) {
-            setIsSleeping(false);
-            controls.start("awake");
-        }
+    const resetIdleTimer = useCallback(() => {
+        setIsSleeping((prev) => {
+            if (prev) {
+                controls.start("awake");
+                return false;
+            }
+            return prev;
+        });
         if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
         idleTimerRef.current = setTimeout(() => {
             setIsSleeping(true);
             controls.start("sleeping");
         }, 10000); // 10 seconds to sleep
-    };
+    }, [controls]);
 
     useEffect(() => {
         resetIdleTimer();
@@ -41,7 +42,7 @@ const Chatbot = () => {
             window.removeEventListener('mousemove', resetIdleTimer);
             window.removeEventListener('keydown', resetIdleTimer);
         };
-    }, [isSleeping]);
+    }, [resetIdleTimer]);
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -133,11 +134,6 @@ const Chatbot = () => {
             y: 10,
             transition: { duration: 1 }
         }
-    };
-
-    const getEyePath = (variant) => {
-        // Unused helper, but keeping safe fallback
-        return "M 2 2 L 2 10 L 10 10 L 10 2";
     };
 
     // Helper to render eyes based on state

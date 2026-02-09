@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Eye, CheckCircle2, Clock, Lightbulb, X, Calendar, Code, Globe, FileText, Download, BarChart3, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ExternalLink, Github, Eye, CheckCircle2, Clock, Lightbulb, X, Code, Globe, FileText, Download } from 'lucide-react';
 import aiModelHubImage from '../assests/ai-artificial-intelligence-machine-learning-technology-concept_143463-8643.avif';
 import satelliteImage from '../assests/artificial-satellite-orbiting-earth-concept-future-technology-satellites-human-galactic-conquest-space-debris-nasa-generative-ai_853928-910.jpg';
 import recommendationSystemImage from '../assests/AI-in-Recommendation-Engine-(In).png';
@@ -11,7 +11,6 @@ import rainfallAnalysisImage from '../assests/rainy-day-with-umbrellas-forest-ba
 import carChart1 from '../assests/Images/car price prediction/output.png';
 import carChart2 from '../assests/Images/car price prediction/output1.png';
 import carChart3 from '../assests/Images/car price prediction/output2.png';
-import carChart4 from '../assests/Images/car price prediction/output3.png';
 // Unemployment Analysis charts
 import unempChart1 from '../assests/Images/unemployeement analysis/output.png';
 import unempChart2 from '../assests/Images/unemployeement analysis/output1.png';
@@ -172,72 +171,6 @@ const ProjectCard = ({ project, type, onCardClick }) => {
 };
 
 // Project Detail Modal Component
-// Simple Image Carousel for visualization images
-const ImageCarousel = ({ items }) => {
-  const [index, setIndex] = useState(0);
-  useEffect(() => {
-    if (!items || items.length < 2) return;
-    const t = setInterval(() => setIndex((i) => (i + 1) % items.length), 4000);
-    return () => clearInterval(t);
-  }, [items]);
-  if (!items || items.length === 0) return null;
-  const goPrev = () => setIndex((i) => (i - 1 + items.length) % items.length);
-  const goNext = () => setIndex((i) => (i + 1) % items.length);
-  const active = items[index];
-  return (
-    <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-dark-800 border border-purple-100 dark:border-purple-800 shadow-sm">
-      <div className="relative h-64 md:h-80">
-        <motion.img
-          key={index}
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
-          src={active.image}
-          alt={active.title || 'Visualization'}
-          className="w-full h-full object-contain bg-gray-50 dark:bg-dark-900"
-        />
-        {/* Controls */}
-        {items.length > 1 && (
-          <>
-            <button
-              className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 dark:bg-dark-700/90 shadow hover:scale-105 transition"
-              onClick={goPrev}
-              aria-label="Previous"
-            >
-              <ChevronLeft size={18} className="text-gray-800 dark:text-gray-200" />
-            </button>
-            <button
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/90 dark:bg-dark-700/90 shadow hover:scale-105 transition"
-              onClick={goNext}
-              aria-label="Next"
-            >
-              <ChevronRight size={18} className="text-gray-800 dark:text-gray-200" />
-            </button>
-          </>
-        )}
-        {/* Dots */}
-        {items.length > 1 && (
-          <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5">
-            {items.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIndex(i)}
-                className={`h-2.5 rounded-full transition-all ${i === index ? 'w-6 bg-purple-600' : 'w-2.5 bg-purple-300 dark:bg-purple-700'}`}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-      {(active.title || active.description) && (
-        <div className="p-4 border-t border-purple-100 dark:border-purple-800">
-          {active.title && <h4 className="text-base font-semibold text-gray-900 dark:text-white">{active.title}</h4>}
-          {active.description && <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{active.description}</p>}
-        </div>
-      )}
-    </div>
-  );
-};
-
 const ProjectDetailModal = ({ project, isOpen, onClose, type }) => {
   if (!project || !isOpen) return null;
 
@@ -250,33 +183,6 @@ const ProjectDetailModal = ({ project, isOpen, onClose, type }) => {
     project.pdf ||
     (project.resources && project.resources.length > 0)
   );
-  
-  // Lightweight inline bar chart for numeric summaries
-  const MiniBarChart = ({ series }) => {
-    if (!series || series.length === 0) return null;
-    const maxVal = Math.max(...series.map(s => s.value));
-    return (
-      <div className="space-y-3">
-        {series.map((s, idx) => {
-          const widthPct = maxVal > 0 ? Math.round((s.value / maxVal) * 100) : 0;
-          return (
-            <div key={idx}>
-              <div className="flex justify-between mb-1">
-                <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{s.label}</span>
-                <span className="text-sm text-gray-600 dark:text-gray-400">{s.display ?? s.value}</span>
-              </div>
-              <div className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div
-                  className="h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
-                  style={{ width: `${widthPct}%` }}
-                />
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
 
   return (
     <AnimatePresence>
@@ -517,7 +423,7 @@ const ProjectDetailModal = ({ project, isOpen, onClose, type }) => {
                               // For Tableau Public app/profile format, try converting to views format
                               if (embedUrl.includes('/app/profile/')) {
                                 // Extract workbook and sheet name from /app/profile/username/viz/WorkbookName/SheetName
-                                const match = embedUrl.match(/\/viz\/([^\/]+)\/([^\/]+)/);
+                                const match = embedUrl.match(/\/viz\/([^/]+)\/([^/]+)/);
                                 if (match) {
                                   const workbookName = match[1];
                                   const sheetName = match[2];

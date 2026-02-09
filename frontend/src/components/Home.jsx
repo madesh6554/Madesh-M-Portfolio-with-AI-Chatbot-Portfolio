@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown, X, FileText, Briefcase, Brain, BarChart3, TrendingUp, CheckCircle, Cpu, Atom, Zap, Network, Sparkles } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown, X, FileText, Briefcase, Brain, BarChart3, TrendingUp, CheckCircle, Cpu, Atom, Sparkles } from 'lucide-react';
 import profileImage from '../assests/ChatGPT Image Jan 6, 2026, 04_11_57 PM.png';
 import AnimatedParticlesBackground from './AnimatedParticlesBackground';
 
@@ -16,7 +16,7 @@ const Home = () => {
   };
 
   // 🔹 Typewriter animation setup
-  const roles = [
+  const roles = useMemo(() => [
     'AI & ML Engineer',
     'Data Scientist',
     'Data Analyst',
@@ -38,7 +38,7 @@ const Home = () => {
     'Analytics Consultant',
     'Data Storyteller',
     'Research Data Scientist',
-  ];
+  ], []);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -65,7 +65,7 @@ const Home = () => {
     }, speed);
 
     return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, roleIndex]);
+  }, [displayedText, isDeleting, roleIndex, roles]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
