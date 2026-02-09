@@ -15,6 +15,7 @@ const ScrollNavigation = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
