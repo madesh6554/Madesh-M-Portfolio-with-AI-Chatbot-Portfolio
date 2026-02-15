@@ -229,6 +229,13 @@ from routes.chatbot import chatbot_bp
 # Register Blueprints
 app.register_blueprint(chatbot_bp, url_prefix='/api')
 
+
+@app.route('/healthz')
+def healthz():
+    """Health check for Render (and other platforms)."""
+    return jsonify({"status": "ok"}), 200
+
+
 def send_email_notification(data):
     """Send email notification for new contact form submission"""
     # Email configuration from environment variables
