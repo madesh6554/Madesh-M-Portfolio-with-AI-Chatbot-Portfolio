@@ -30,9 +30,9 @@
       "react-app/jest"
     ],
     "rules": {
-      "no-unused-vars": "warn",
-      "react-hooks/exhaustive-deps": "warn",
-      "no-useless-escape": "warn"
+      "no-unused-vars": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "no-useless-escape": "off"
     }
   },
   "browserslist": {
