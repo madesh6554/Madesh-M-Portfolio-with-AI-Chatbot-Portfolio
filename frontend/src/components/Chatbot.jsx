@@ -71,7 +71,10 @@ const Chatbot = () => {
         resetIdleTimer();
 
         try {
-            const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+            const apiUrl = process.env.REACT_APP_API_URL
+                || (process.env.NODE_ENV === 'production'
+                    ? 'https://madesh-m-portfolio-with-ai-chatbot.onrender.com'
+                    : 'http://localhost:5000');
             const response = await fetch(`${apiUrl}/api/chatbot`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

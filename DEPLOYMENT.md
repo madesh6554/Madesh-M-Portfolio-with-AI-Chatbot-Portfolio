@@ -69,14 +69,17 @@ your-repo/
    - **Output Directory:** `build`
    - **Install Command:** `npm install`
 
-### 2.2 Environment variables (Vercel)
+### 2.2 Environment variables (Vercel) – optional
 
-1. In the project → **Settings** → **Environment Variables**.
-2. Add:
-   - **Name:** `REACT_APP_API_URL`  
-   - **Value:** your backend URL from Part 1, e.g. `https://portfolio-backend-xxxx.onrender.com`  
-   - **Environment:** Production (and Preview if you want)
-3. Save and trigger a **Redeploy** (Deployments → ⋮ → Redeploy).
+The frontend **defaults** to this backend in production:  
+`https://madesh-m-portfolio-with-ai-chatbot.onrender.com`
+
+To override or for clarity, in Vercel → **Settings** → **Environment Variables** add:
+- **Name:** `REACT_APP_API_URL`
+- **Value:** `https://madesh-m-portfolio-with-ai-chatbot.onrender.com`
+- **Environment:** Production (and Preview if you want)
+
+Then trigger a **Redeploy** (Deployments → ⋮ → Redeploy).
 
 ---
 
