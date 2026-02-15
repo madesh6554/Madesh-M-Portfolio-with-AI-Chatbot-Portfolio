@@ -12,12 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-# Explicitly allow Vercel frontend + localhost (fixes CORS from Vercel -> Render)
-CORS(app, origins=[
-    "https://madesh-m-portfolio-with-ai-chatbot.vercel.app",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-], allow_headers=["Content-Type"], methods=["GET", "POST", "OPTIONS"])
+CORS(app)  # Allow all origins so Vercel and any subdomain can reach the API
 
 # Database setup
 DATABASE = 'portfolio.db'

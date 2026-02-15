@@ -70,10 +70,12 @@ const Chatbot = () => {
         setIsLoading(true);
         resetIdleTimer();
 
-        const apiUrl = process.env.REACT_APP_API_URL
+        // Backend URL: no trailing slash. Production = Render; local = localhost.
+        const BACKEND_URL = process.env.REACT_APP_API_URL
             || (process.env.NODE_ENV === 'production'
                 ? 'https://madesh-m-portfolio-with-ai-chatbot.onrender.com'
                 : 'http://localhost:5000');
+        const apiUrl = BACKEND_URL.replace(/\/$/, ''); // ensure no trailing slash
 
         const doFetch = async () => {
             const controller = new AbortController();
