@@ -75,15 +75,32 @@ const Chatbot = () => {
                 || (process.env.NODE_ENV === 'production'
                     ? 'https://madesh-m-portfolio-with-ai-chatbot.onrender.com'
                     : 'http://localhost:5000');
+            // 60s timeout so Render free-tier cold start has time to wake up
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 60000);
             const response = await fetch(`${apiUrl}/api/chatbot`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ message: text }),
+                signal: controller.signal,
             });
+            clearTimeout(timeoutId);
+            if (!response.ok) {
+                const msg = response.status === 503 || response.status === 502
+                    ? "The assistant is waking up. Please try again in a moment."
+                    : `Something went wrong (${response.status}). Please try again.`;
+                setMessages(prev => [...prev, { text: msg, isBot: true }]);
+                return;
+            }
             const data = await response.json();
-            setMessages(prev => [...prev, { text: data.reply, isBot: true }]);
+            setMessages(prev => [...prev, { text: data.reply || data.error || "No response.", isBot: true }]);
         } catch (error) {
-            setMessages(prev => [...prev, { text: "Nexus event detected. Connection lost.", isBot: true }]);
+            const isAbort = error.name === 'AbortError';
+            const isNetwork = !error.response && (error.message === 'Failed to fetch' || error.message?.includes('NetworkError'));
+            const msg = isAbort || isNetwork
+                ? "The assistant is taking longer than usual (it may be waking up). Please try again in a few seconds."
+                : "Nexus event detected. Connection lost. Please try again.";
+            setMessages(prev => [...prev, { text: msg, isBot: true }]);
         } finally {
             setIsLoading(false);
         }

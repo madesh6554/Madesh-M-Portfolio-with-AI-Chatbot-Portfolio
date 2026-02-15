@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)  # Allows frontend to communicate
+CORS(app)  # Allow all origins so Vercel (and preview URLs) can reach the API
 
 # Database setup
 DATABASE = 'portfolio.db'
