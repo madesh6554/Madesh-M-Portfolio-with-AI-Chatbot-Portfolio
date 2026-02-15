@@ -28,12 +28,12 @@ Or rely on the **`.python-version`** file in `backend/` (contains `3.12`). If th
 
 | Key | Value | Notes |
 |-----|--------|--------|
-| **GEMINI_API_KEY** | Your API key | Get free key: [Google AI Studio](https://aistudio.google.com/apikey). Recommended. |
+| **GEMINI_API_KEY** | Your API key | Get free key: [Google AI Studio](https://aistudio.google.com/apikey). **Use this for deployment.** |
 | **OPENAI_API_KEY** | Your API key | Or use [OpenAI](https://platform.openai.com/api-keys) if you prefer. |
-| **LLM_PROVIDER** | `gemini` or `openai` | Optional. If not set, backend uses whichever API key is present (Gemini first). |
+| **LLM_PROVIDER** | `gemini` or `openai` | Optional. Set to **`gemini`** if you use GEMINI_API_KEY. **Do not set to `huggingface`** unless you also set HUGGINGFACE_API_KEY. |
 
-- Add **either** `GEMINI_API_KEY` **or** `OPENAI_API_KEY` (or both; set `LLM_PROVIDER` to choose).
-- If neither is set, the chatbot will not work properly.
+- Add **GEMINI_API_KEY** (recommended) or **OPENAI_API_KEY**. If you use Gemini, set **LLM_PROVIDER** = **`gemini`**.
+- If you see *"Error connecting to AI: You must provide an api_key... hf auth login"*, the backend tried to use Hugging Face without a key. Fix: add **GEMINI_API_KEY** and set **LLM_PROVIDER** = **`gemini`**, then redeploy.
 
 ---
 

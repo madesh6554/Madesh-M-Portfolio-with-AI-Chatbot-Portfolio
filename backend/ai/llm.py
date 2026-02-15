@@ -69,22 +69,30 @@ class HuggingFaceClient(LLMClient):
             return f"Error connecting to AI: {str(e)}"
 
 def get_llm_client():
-    provider = os.getenv("LLM_PROVIDER", "").lower()
-    
-    if provider == "gemini":
+    """Use Gemini if key is set (default for deployment); else OpenAI; else HuggingFace. Never use a provider without its key."""
+    provider = (os.getenv("LLM_PROVIDER") or "").strip().lower()
+    has_gemini = bool(os.getenv("GEMINI_API_KEY"))
+    has_openai = bool(os.getenv("OPENAI_API_KEY"))
+    has_hf = bool(os.getenv("HUGGINGFACE_API_KEY"))
+
+    if provider == "gemini" and has_gemini:
         return GeminiClient()
-    elif provider == "huggingface":
-        return HuggingFaceClient()
-    elif provider == "openai":
+    if provider == "openai" and has_openai:
         return OpenAIClient()
-    
-    # Auto-detection fallback
-    if os.getenv("GEMINI_API_KEY"):
+    if provider == "huggingface" and has_hf:
+        return HuggingFaceClient()
+
+    # Auto-detect: prefer Gemini (common for portfolio chatbots)
+    if has_gemini:
         return GeminiClient()
-    elif os.getenv("HUGGINGFACE_API_KEY"):
-        return HuggingFaceClient()
-    elif os.getenv("OPENAI_API_KEY"):
+    if has_openai:
         return OpenAIClient()
-    else:
-        print("Warning: No viable LLM API key found.")
-        return OpenAIClient(api_key="dummy")
+    if has_hf:
+        return HuggingFaceClient()
+
+    print("Warning: No LLM API key found. Set GEMINI_API_KEY (or OPENAI_API_KEY) on Render.")
+    # Return a no-op client that gives a clear message (avoids HuggingFace/OpenAI errors when no key)
+    class NoKeyClient(LLMClient):
+        def generate_response(self, prompt: str, system_prompt: str) -> str:
+            return "The assistant is not configured: add GEMINI_API_KEY (or OPENAI_API_KEY) in Render → Environment Variables, then redeploy."
+    return NoKeyClient()
