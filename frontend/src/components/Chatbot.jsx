@@ -63,19 +63,19 @@ const Chatbot = () => {
     }, [isOpen]);
 
     // --- API CALL ---
-    const sendMessage = async (text) => {
+    const sendMessage = async (text, isRetry = false) => {
         if (!text.trim() || isLoading) return;
 
         setMessages(prev => [...prev, { text: text, isBot: false }]);
         setIsLoading(true);
         resetIdleTimer();
 
-        try {
-            const apiUrl = process.env.REACT_APP_API_URL
-                || (process.env.NODE_ENV === 'production'
-                    ? 'https://madesh-m-portfolio-with-ai-chatbot.onrender.com'
-                    : 'http://localhost:5000');
-            // 60s timeout so Render free-tier cold start has time to wake up
+        const apiUrl = process.env.REACT_APP_API_URL
+            || (process.env.NODE_ENV === 'production'
+                ? 'https://madesh-m-portfolio-with-ai-chatbot.onrender.com'
+                : 'http://localhost:5000');
+
+        const doFetch = async () => {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 60000);
             const response = await fetch(`${apiUrl}/api/chatbot`, {
@@ -85,6 +85,11 @@ const Chatbot = () => {
                 signal: controller.signal,
             });
             clearTimeout(timeoutId);
+            return response;
+        };
+
+        try {
+            let response = await doFetch();
             if (!response.ok) {
                 const msg = response.status === 503 || response.status === 502
                     ? "The assistant is waking up. Please try again in a moment."
@@ -97,7 +102,21 @@ const Chatbot = () => {
         } catch (error) {
             const isAbort = error.name === 'AbortError';
             const isNetwork = !error.response && (error.message === 'Failed to fetch' || error.message?.includes('NetworkError'));
-            const msg = isAbort || isNetwork
+            const shouldRetry = (isAbort || isNetwork) && !isRetry;
+            if (shouldRetry) {
+                setMessages(prev => [...prev, { text: "One moment…", isBot: true }]);
+                await new Promise(r => setTimeout(r, 4000));
+                try {
+                    const response = await doFetch();
+                    if (response.ok) {
+                        const data = await response.json();
+                        setMessages(prev => prev.slice(0, -1).concat([{ text: data.reply || data.error || "No response.", isBot: true }]));
+                        return;
+                    }
+                } catch (_) { /* fall through to error message */ }
+                setMessages(prev => prev.slice(0, -1)); // remove "One moment…"
+            }
+            const msg = (isAbort || isNetwork)
                 ? "The assistant is taking longer than usual (it may be waking up). Please try again in a few seconds."
                 : "Nexus event detected. Connection lost. Please try again.";
             setMessages(prev => [...prev, { text: msg, isBot: true }]);
