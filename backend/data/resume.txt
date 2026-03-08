@@ -172,6 +172,7 @@ Tools & Platforms:
 - MediaPipe / Three.js (60% proficiency) - Basic
 - Whisper / TTS (ElevenLabs) (70% proficiency) - Intermediate
 - NVIDIA oneAPI / CUDA (65% proficiency) - Basic
+- n8n (workflow automation with LLMs & APIs) - Intermediate
 
 === CERTIFICATIONS & ACHIEVEMENTS ===
 

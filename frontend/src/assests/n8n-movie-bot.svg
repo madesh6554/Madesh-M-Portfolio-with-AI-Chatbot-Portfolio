@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Movie Recommendation Automation workflow">
+  <defs>
+    <linearGradient id="bg2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#071629"/>
+      <stop offset="1" stop-color="#0a2440"/>
+    </linearGradient>
+    <radialGradient id="glow2" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#b07bff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#b07bff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow2" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="softGlow2" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feColorMatrix in="b" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.65 0" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .title{font:700 48px system-ui,Segoe UI,Roboto,Arial;fill:#f1edff}
+      .sub{font:500 22px system-ui,Segoe UI,Roboto,Arial;fill:#dbcfff}
+      .label{font:700 22px system-ui,Segoe UI,Roboto,Arial;fill:#f1edff}
+      .small{font:500 18px system-ui,Segoe UI,Roboto,Arial;fill:#e6ddff}
+      .node{fill:#142a4a;stroke:#b07bff;stroke-width:2.2}
+      .chip{fill:#0f2340;stroke:#caa7ff;stroke-width:1.6}
+      .line{stroke:#caa7ff;stroke-width:3;stroke-linecap:round;opacity:.92}
+      .dot{fill:#caa7ff}
+      .muted{opacity:.75}
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg2)"/>
+  <circle cx="350" cy="210" r="320" fill="url(#glow2)"/>
+  <circle cx="1220" cy="740" r="360" fill="url(#glow2)"/>
+
+  <g filter="url(#softGlow2)">
+    <text x="88" y="110" class="title">Movie Recommendation Automation Bot</text>
+    <text x="90" y="155" class="sub">n8n " APIs " Custom Scoring " Gemini LLM " Telegram</text>
+  </g>
+
+  <g filter="url(#shadow2)">
+    <!-- Node 1 -->
+    <g transform="translate(120,260)">
+      <rect class="node" rx="22" ry="22" width="360" height="170"/>
+      <text x="26" y="52" class="label">Movie APIs</text>
+      <text x="26" y="92" class="small muted">Fetch latest movies</text>
+      <g transform="translate(26,112)">
+        <rect class="chip" rx="14" ry="14" width="152" height="42"/>
+        <text x="16" y="28" class="small">Trending</text>
+      </g>
+      <g transform="translate(190,112)">
+        <rect class="chip" rx="14" ry="14" width="144" height="42"/>
+        <text x="16" y="28" class="small">Metadata</text>
+      </g>
+    </g>
+
+    <!-- Node 2 -->
+    <g transform="translate(620,260)">
+      <rect class="node" rx="22" ry="22" width="360" height="170"/>
+      <text x="26" y="52" class="label">Filter + Score</text>
+      <text x="26" y="92" class="small muted">Rating " votes " popularity</text>
+      <g transform="translate(26,112)">
+        <rect class="chip" rx="14" ry="14" width="168" height="42"/>
+        <text x="16" y="28" class="small">Logic</text>
+      </g>
+      <g transform="translate(206,112)">
+        <rect class="chip" rx="14" ry="14" width="128" height="42"/>
+        <text x="16" y="28" class="small">Ranking</text>
+      </g>
+    </g>
+
+    <!-- Node 3 -->
+    <g transform="translate(1120,260)">
+      <rect class="node" rx="22" ry="22" width="360" height="170"/>
+      <text x="26" y="52" class="label">Gemini Insight</text>
+      <text x="26" y="92" class="small muted">Summary " vibe " audience fit</text>
+      <g transform="translate(26,112)">
+        <rect class="chip" rx="14" ry="14" width="178" height="42"/>
+        <text x="16" y="28" class="small">LLM Summary</text>
+      </g>
+      <g transform="translate(214,112)">
+        <rect class="chip" rx="14" ry="14" width="120" height="42"/>
+        <text x="16" y="28" class="small">Mood</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <g>
+    <path class="line" d="M480 345 C540 345, 560 345, 620 345"/>
+    <circle class="dot" cx="550" cy="345" r="6"/>
+    <path class="line" d="M980 345 C1040 345, 1060 345, 1120 345"/>
+    <circle class="dot" cx="1050" cy="345" r="6"/>
+  </g>
+
+  <!-- Telegram delivery -->
+  <g filter="url(#shadow2)" transform="translate(520,520)">
+    <rect class="node" rx="22" ry="22" width="560" height="220"/>
+    <text x="26" y="56" class="label">Telegram Delivery</text>
+    <text x="26" y="98" class="small muted">Send posters + curated picks to friends</text>
+    <g transform="translate(26,124)">
+      <rect class="chip" rx="14" ry="14" width="186" height="44"/>
+      <text x="16" y="30" class="small">Webhook</text>
+    </g>
+    <g transform="translate(226,124)">
+      <rect class="chip" rx="14" ry="14" width="186" height="44"/>
+      <text x="16" y="30" class="small">Bot Message</text>
+    </g>
+    <g transform="translate(426,124)">
+      <rect class="chip" rx="14" ry="14" width="108" height="44"/>
+      <text x="16" y="30" class="small">Poster</text>
+    </g>
+  </g>
+
+  <g transform="translate(120,810)" class="muted">
+    <text x="0" y="0" class="small">Outcome: More watching ? Less scrolling ? Zero arguments</text>
+  </g>
+</svg>

@@ -72,6 +72,7 @@ const Skills = () => {
         { name: 'MediaPipe / Three.js (Basics)', level: 60, color: '#7f9cf5' },
         { name: 'Whisper / TTS (ElevenLabs)', level: 70, color: '#22c55e' },
         { name: 'Node.js / Express / Firebase', level: 70, color: '#339933' },
+        { name: 'n8n (Automation Workflows)', level: 80, color: '#10b981' },
       ]
     }
   };

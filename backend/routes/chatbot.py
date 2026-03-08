@@ -8,7 +8,7 @@ chatbot_bp = Blueprint('chatbot', __name__)
 # Lightweight path: no ChromaDB so it works on Render free tier (512MB).
 _llm_client = None
 _SIMPLE_CONTEXT_CACHE = None
-_MAX_SIMPLE_CONTEXT_CHARS = 18000
+_MAX_SIMPLE_CONTEXT_CHARS = 40000
 
 
 def _get_simple_context():

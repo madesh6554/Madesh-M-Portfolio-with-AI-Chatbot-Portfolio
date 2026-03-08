@@ -20,6 +20,14 @@ import unempChart4 from '../assests/Images/unemployeement analysis/newplot1.png'
 import aiTutorImage from '../assests/chatgpt-chat-with-ai-artificial-intelligence-woman-chatting-with-smart-ai-artificial-intell_926199-2106756.avif';
 // Personalized AI Chat image
 import aiChatImage from '../assests/_757f1abd-9878-4bf9-a3a4-dbea038785a0.jpg';
+// n8n Automation workflow cover images (SVG)
+import n8nTechNewsImage from '../assests/n8n-tech-news.svg';
+import n8nMovieBotImage from '../assests/n8n-movie-bot.svg';
+// n8n workflow screenshots and demo 
+import n8nTechNewsShot1 from '../assests/n8n workflow/AI-Powered Daily Tech News Automation (n8n)/Screenshot 2026-02-25 121312.png';
+import n8nTechNewsShot2 from '../assests/n8n workflow/AI-Powered Daily Tech News Automation (n8n)/Screenshot (428).png';
+import n8nMovieBotShot1 from '../assests/n8n workflow/Movie Recommendation Automation Bot (n8n + Telegram)/Screenshot (443).png';
+import n8nMovieBotVideo from '../assests/n8n workflow/Movie Recommendation Automation Bot (n8n + Telegram)/Screen Recording 2026-02-26 214002 (online-video-cutter.com).mp4';
 
 // ProjectCard Component
 const ProjectCard = ({ project, type, onCardClick }) => {
@@ -386,6 +394,56 @@ const ProjectDetailModal = ({ project, isOpen, onClose, type }) => {
                                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
                                   {metric.description}
                                 </p>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* Workflow / Visual Gallery */}
+                    {project.media && project.media.length > 0 && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.24 }}
+                        className="bg-gradient-to-br from-indigo-50 via-slate-50 to-white dark:from-indigo-900/30 dark:via-slate-900/40 dark:to-dark-800 rounded-2xl p-6 border border-indigo-200 dark:border-indigo-700"
+                      >
+                        <div className="flex items-center gap-3 mb-6">
+                          <div className="p-2 bg-indigo-600 rounded-lg">
+                            <Code size={22} className="text-white" />
+                          </div>
+                          <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                            Workflow gallery
+                          </h3>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          {project.media.map((item, idx) => (
+                            <div
+                              key={idx}
+                              className="relative rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-dark-900 shadow-sm"
+                            >
+                              {item.type === 'video' ? (
+                                <video
+                                  src={item.src}
+                                  controls
+                                  className="w-full h-64 object-cover bg-black"
+                                >
+                                  Your browser does not support the video tag.
+                                </video>
+                              ) : (
+                                <img
+                                  src={item.src}
+                                  alt={item.alt || project.title}
+                                  className="w-full h-64 object-cover"
+                                />
+                              )}
+                              {item.caption && (
+                                <div className="p-3 border-t border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-dark-800/90">
+                                  <p className="text-sm text-gray-700 dark:text-gray-300">
+                                    {item.caption}
+                                  </p>
+                                </div>
                               )}
                             </div>
                           ))}
@@ -1099,6 +1157,97 @@ const Projects = () => {
         'Policy Insight: Identified high-unemployment regions useful for targeted government interventions'
       ],
       additionalInfo: 'Project Overview:\n• Internship: Oasis Infobyte – Data Science Internship (Task 2)\n• Objective: Analyze unemployment trends in India during 2020 using Python-based EDA\n• Dataset: Unemployment_Rate_upto_11_2020 (sourced from Kaggle archive)\n\nData Preparation:\n• Imported dataset into Pandas, inspected schema, and confirmed data completeness\n• Renamed columns during exploration for clarity where needed\n• Generated descriptive statistics to summarize employment and participation metrics\n\nAnalysis Steps:\n• Correlation Analysis: Evaluated numerical relationships to detect patterns among labour indicators\n• Visualization Suite: Utilized Seaborn histograms, bar charts, and heatmaps for regional comparisons\n• Geographic Breakdown: Examined latitude/longitude with regional hue to reveal spatial unemployment distribution\n\nInsights:\n• Highlighted regions with higher estimated unemployment rates and lower participation rates\n• Exposed geographic clusters that may signal regional economic challenges\n• Delivered visual evidence to guide workforce planning and policy decisions\n\nResources:\n• Notebook Location: /public/pdfs/Jupyter files/Unemplyment analysis with python task_2-checkpoint.ipynb'
+    }
+    ,
+    {
+      id: 10,
+      title: 'AI-Powered Daily Tech News Automation (n8n)',
+      description: 'Automated workflow that fetches real-time AI news from Google News RSS, summarizes it with Gemini, and stores structured results in Google Sheets.',
+      extendedDescription:
+        'This automation system was built to track daily AI trends without manually reading multiple articles. The n8n workflow fetches real-time AI news from Google News RSS, uses Google Gemini LLM to generate 5-point summaries, and automatically stores the structured results in Google Sheets.\n\nIt improved my understanding of workflow automation, LLM integration, API orchestration, and real-time data pipelines.',
+      image: n8nTechNewsImage,
+      tags: ['Automation', 'n8n', 'LLM'],
+      technologies: ['n8n', 'Google News RSS', 'Google Gemini LLM', 'Google Sheets API', 'Automation', 'API Orchestration'],
+      github: '',
+      demo: 'https://www.linkedin.com/posts/madesh-m-15037b273_ai-automation-n8n-activity-7432316879395799041-Es3J',
+      featured: false,
+      media: [
+        {
+          type: 'image',
+          src: n8nTechNewsShot1,
+          alt: 'n8n workflow canvas – AI tech news pipeline',
+          caption: 'n8n workflow: Google News RSS → Gemini summarizer → Google Sheets writer.'
+        },
+        {
+          type: 'image',
+          src: n8nTechNewsShot2,
+          alt: 'Google Sheets output with Gemini AI summaries',
+          caption: 'Structured daily AI news summaries stored in Google Sheets.'
+        }
+      ],
+      features: [
+        'RSS Ingestion: Fetches real-time AI news from Google News RSS',
+        'LLM Summarization: Generates clean 5-point summaries with Gemini',
+        'Structured Storage: Writes outputs into Google Sheets (rows/columns)',
+        'Automation Orchestration: End-to-end workflow in n8n with API steps',
+        'Repeatable Pipeline: Designed for daily use to track trending topics'
+      ],
+      resources: [
+        {
+          label: 'LinkedIn Post (workflow, images, demo)',
+          url: 'https://www.linkedin.com/posts/madesh-m-15037b273_ai-automation-n8n-activity-7432316879395799041-Es3J'
+        }
+      ],
+      codeLanguage: 'n8n',
+      codeSnippet:
+        'Workflow outline:\\n1) Trigger (schedule/manual)\\n2) Fetch RSS (Google News)\\n3) Parse items\\n4) Gemini summary (5 points)\\n5) Format structured output\\n6) Append row to Google Sheets',
+      additionalInfo:
+        'Tech Used:\\n• n8n\\n• Google News RSS\\n• Google Gemini LLM\\n• Google Sheets API\\n\\nSkills Strengthened:\\n• Workflow automation\\n• LLM integration\\n• API orchestration\\n• Real-time data pipelines'
+    },
+    {
+      id: 11,
+      title: 'Movie Recommendation Automation Bot (n8n + Telegram)',
+      description: 'Automation workflow that fetches latest movies, filters and scores them, uses AI to generate summary/vibe/audience match, and sends recommendations to Telegram with posters.',
+      extendedDescription:
+        'Built to solve the “What should we watch?” decision problem. The workflow automatically fetches latest movies, filters by rating/votes/popularity, scores them with custom logic, uses an LLM to generate summary + vibe + audience match, and sends curated recommendations to Telegram (with posters).\n\nNext upgrades planned: trailer preview integration, comment sentiment analysis, and personalized taste learning.',
+      image: n8nMovieBotImage,
+      tags: ['Automation', 'n8n', 'Telegram', 'LLM'],
+      technologies: ['n8n', 'APIs', 'Webhooks', 'Telegram Bot', 'Google Gemini LLM', 'Automation', 'Ranking/Scoring'],
+      github: '',
+      demo: 'https://www.linkedin.com/posts/madesh-m-15037b273_ai-automation-llm-activity-7432819683592028161-Tczt',
+      featured: false,
+      media: [
+        {
+          type: 'image',
+          src: n8nMovieBotShot1,
+          alt: 'n8n workflow – movie recommendation pipeline',
+          caption: 'n8n pipeline: fetch latest movies, filter by rating/votes/popularity, rank with custom logic.'
+        },
+        {
+          type: 'video',
+          src: n8nMovieBotVideo,
+          alt: 'Movie recommendation bot sending picks to Telegram',
+          caption: 'Demo: movie recommendations delivered directly to Telegram with posters.'
+        }
+      ],
+      features: [
+        'Automated Movie Fetch: Pulls latest/trending movies via APIs',
+        'Filtering: Rating, votes, and popularity based selection',
+        'Custom Scoring: Ranks movies using a transparent scoring logic',
+        'LLM Insights: Generates summary, vibe and audience match',
+        'Telegram Delivery: Sends posters + recommendations to Telegram instantly'
+      ],
+      resources: [
+        {
+          label: 'LinkedIn Post (workflow, demo video)',
+          url: 'https://www.linkedin.com/posts/madesh-m-15037b273_ai-automation-llm-activity-7432819683592028161-Tczt'
+        }
+      ],
+      codeLanguage: 'n8n',
+      codeSnippet:
+        'Workflow outline:\\n1) Trigger (weekend schedule/manual)\\n2) Fetch latest movies\\n3) Filter by rating/votes/popularity\\n4) Compute score + rank\\n5) Gemini: summary + vibe + audience\\n6) Telegram: send poster + top picks',
+      additionalInfo:
+        'Result:\\n• More watching 🍿\\n• Less scrolling 📱\\n• Zero arguments 😎\\n\\nNext:\\n• Trailer preview integration\\n• Comment sentiment analysis\\n• Personalized taste learning'
     }
   ];
 

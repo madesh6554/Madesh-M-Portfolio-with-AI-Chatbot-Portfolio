@@ -96,6 +96,20 @@ Description: Modern React-based portfolio website showcasing projects, skills, e
 Technologies: React, Tailwind CSS, Framer Motion, Flask Backend, SQLite
 Status: Completed and Live
 
+11. AI-Powered Daily Tech News Automation (n8n)
+Description: Automated workflow using n8n that fetches real-time AI news from Google News RSS, uses Google Gemini to generate 5-point summaries, and stores structured results in Google Sheets.
+
+Technologies: n8n, Google News RSS, Google Gemini LLM, Google Sheets API, Automation, API Orchestration
+Demo (LinkedIn): https://www.linkedin.com/posts/madesh-m-15037b273_ai-automation-n8n-activity-7432316879395799041-Es3J
+Status: Completed
+
+12. Movie Recommendation Automation Bot (n8n + Telegram)
+Description: Automation workflow that fetches latest movies via APIs, filters and ranks them with custom scoring, uses AI to generate summary + vibe + audience match, and sends recommendations to Telegram with posters.
+
+Technologies: n8n, APIs, Webhooks, Telegram Bot, Google Gemini LLM, Automation, Ranking/Scoring
+Demo (LinkedIn): https://www.linkedin.com/posts/madesh-m-15037b273_ai-automation-llm-activity-7432819683592028161-Tczt
+Status: Completed
+
 === ONGOING PROJECTS ===
 
 1. Conversational AI Tutor (RAG + STT/TTS Mascot)

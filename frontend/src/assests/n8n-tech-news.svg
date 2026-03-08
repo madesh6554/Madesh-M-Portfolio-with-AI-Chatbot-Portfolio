@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="AI-Powered Daily Tech News Automation workflow">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#061a2f"/>
+      <stop offset="1" stop-color="#0a2c4f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#66e3ff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#66e3ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feColorMatrix in="b" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.65 0" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .title{font:700 48px system-ui,Segoe UI,Roboto,Arial;fill:#eaf6ff}
+      .sub{font:500 22px system-ui,Segoe UI,Roboto,Arial;fill:#bfeaff}
+      .label{font:700 22px system-ui,Segoe UI,Roboto,Arial;fill:#eaf6ff}
+      .small{font:500 18px system-ui,Segoe UI,Roboto,Arial;fill:#cfefff}
+      .node{fill:#0e3a66;stroke:#3fe3ff;stroke-width:2.2}
+      .chip{fill:#083457;stroke:#2fd7ff;stroke-width:1.6}
+      .line{stroke:#2fd7ff;stroke-width:3;stroke-linecap:round;opacity:.9}
+      .dot{fill:#2fd7ff}
+      .muted{opacity:.75}
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1160" cy="190" r="320" fill="url(#glow)"/>
+  <circle cx="420" cy="740" r="360" fill="url(#glow)"/>
+
+  <g filter="url(#softGlow)">
+    <text x="88" y="110" class="title">AI-Powered Daily Tech News Automation</text>
+    <text x="90" y="155" class="sub">n8n " Google News RSS " Gemini LLM " Google Sheets</text>
+  </g>
+
+  <!-- Pipeline -->
+  <g filter="url(#shadow)">
+    <!-- Node 1 -->
+    <g transform="translate(120,260)">
+      <rect class="node" rx="22" ry="22" width="360" height="170"/>
+      <text x="26" y="52" class="label">Google News RSS</text>
+      <text x="26" y="92" class="small muted">Fetch real-time AI news</text>
+      <g transform="translate(26,112)">
+        <rect class="chip" rx="14" ry="14" width="148" height="42"/>
+        <text x="18" y="28" class="small">RSS Feed</text>
+      </g>
+      <g transform="translate(190,112)">
+        <rect class="chip" rx="14" ry="14" width="144" height="42"/>
+        <text x="16" y="28" class="small">Parsing</text>
+      </g>
+    </g>
+
+    <!-- Node 2 -->
+    <g transform="translate(620,260)">
+      <rect class="node" rx="22" ry="22" width="360" height="170"/>
+      <text x="26" y="52" class="label">Gemini Summarizer</text>
+      <text x="26" y="92" class="small muted">Generate 5-point summaries</text>
+      <g transform="translate(26,112)">
+        <rect class="chip" rx="14" ry="14" width="178" height="42"/>
+        <text x="16" y="28" class="small">Prompting</text>
+      </g>
+      <g transform="translate(214,112)">
+        <rect class="chip" rx="14" ry="14" width="120" height="42"/>
+        <text x="16" y="28" class="small">LLM</text>
+      </g>
+    </g>
+
+    <!-- Node 3 -->
+    <g transform="translate(1120,260)">
+      <rect class="node" rx="22" ry="22" width="360" height="170"/>
+      <text x="26" y="52" class="label">Google Sheets</text>
+      <text x="26" y="92" class="small muted">Store structured results</text>
+      <g transform="translate(26,112)">
+        <rect class="chip" rx="14" ry="14" width="170" height="42"/>
+        <text x="16" y="28" class="small">Sheets API</text>
+      </g>
+      <g transform="translate(206,112)">
+        <rect class="chip" rx="14" ry="14" width="128" height="42"/>
+        <text x="16" y="28" class="small">Row Insert</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <g>
+    <path class="line" d="M480 345 C540 345, 560 345, 620 345"/>
+    <circle class="dot" cx="550" cy="345" r="6"/>
+    <path class="line" d="M980 345 C1040 345, 1060 345, 1120 345"/>
+    <circle class="dot" cx="1050" cy="345" r="6"/>
+  </g>
+
+  <!-- Footer skills -->
+  <g transform="translate(120,520)" class="muted">
+    <text x="0" y="0" class="label">Skills strengthened</text>
+    <text x="0" y="42" class="small">Workflow automation " LLM integration " API orchestration " Real-time data pipelines</text>
+  </g>
+
+  <!-- n8n-like nodes pattern -->
+  <g opacity="0.5">
+    <circle cx="1300" cy="700" r="10" fill="#2fd7ff"/>
+    <circle cx="1340" cy="740" r="7" fill="#2fd7ff"/>
+    <circle cx="1380" cy="700" r="9" fill="#2fd7ff"/>
+    <path d="M1300 700 L1340 740 L1380 700" stroke="#2fd7ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>

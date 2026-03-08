@@ -22,6 +22,7 @@ Passion & Interests:
 - Natural Language Processing
 - Data Visualization & Analytics
 - AI Ethics & Responsible AI
+- AI & LLM Automation workflows (n8n + APIs)
 - Training and Mentoring students in AI/ML technologies
 
 Key Achievements:
