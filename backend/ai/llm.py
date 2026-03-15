@@ -43,7 +43,7 @@ class GeminiClient(LLMClient):
             return f"Error connecting to AI: {str(e)}"
 
 class HuggingFaceClient(LLMClient):
-    def __init__(self, api_key=None, model="mistralai/Mistral-7B-Instruct-v0.2"):
+    def __init__(self, api_key=None, model="HuggingFaceH4/zephyr-7b-beta"):
         from huggingface_hub import InferenceClient
         self.api_key = api_key or os.getenv("HUGGINGFACE_API_KEY")
         self.model = model
