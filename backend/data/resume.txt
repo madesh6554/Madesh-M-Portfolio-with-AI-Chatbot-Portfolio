@@ -203,6 +203,8 @@ Courses & Specializations:
 - Persona Analytics Programme - Naan Mudhalvan (2024)
 
 Achievements & Badges:
+- AWS Educate Introduction to Generative AI Training - AWS Educate (2025)
+- AWS Educate Machine Learning Foundations Training - AWS Educate (2025)
 - Python Programming Badge - Kaggle (2024)
 - Intro to Deep Learning Badge - Kaggle (2024)
 - Intro to Programming Badge - Kaggle (2024)

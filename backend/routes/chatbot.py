@@ -2,6 +2,7 @@ import os
 import glob
 from flask import Blueprint, request, jsonify
 from ai.prompt import SYSTEM_PROMPT
+from ai.data_fetchers import get_github_projects, get_database_projects, get_linkedin_profile
 
 chatbot_bp = Blueprint('chatbot', __name__)
 
@@ -53,7 +54,28 @@ def chat():
         return jsonify({"error": "Message is required"}), 400
         
     try:
-        context_text = _get_simple_context()
+        # 1. Get static RAG context (from .txt files)
+        rag_context = _get_simple_context()
+        
+        # 2. Get live dynamic data (GitHub + DB Projects + LinkedIn)
+        github_data = get_github_projects()
+        db_projects = get_database_projects()
+        linkedin_info = get_linkedin_profile()
+        
+        # 3. Combine contexts
+        context_text = f"""
+{rag_context}
+
+--- LIVE GITHUB PROJECTS ---
+{github_data}
+
+--- DETAILED PORTFOLIO PROJECTS ---
+{db_projects}
+
+--- LINKEDIN PROFILE ---
+{linkedin_info}
+"""
+        
         formatted_system_prompt = SYSTEM_PROMPT.format(context=context_text)
         llm_client = _get_llm_client()
         response = llm_client.generate_response(

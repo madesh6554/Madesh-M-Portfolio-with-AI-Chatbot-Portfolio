@@ -1,4 +1,5 @@
 import os
+import json
 from abc import ABC, abstractmethod
 import openai
 import google.generativeai as genai
@@ -28,8 +29,7 @@ class OpenAIClient(LLMClient):
             return f"Error connecting to AI: {str(e)}"
 
 class GeminiClient(LLMClient):
-    def __init__(self, api_key=None, model="gemini-1.5-flash"):
-        import google.generativeai as genai
+    def __init__(self, api_key=None, model="models/gemini-1.5-flash"):
         genai.configure(api_key=api_key or os.getenv("GEMINI_API_KEY"))
         self.model = genai.GenerativeModel(model)
 
@@ -69,30 +69,30 @@ class HuggingFaceClient(LLMClient):
             return f"Error connecting to AI: {str(e)}"
 
 def get_llm_client():
-    """Use Gemini if key is set (default for deployment); else OpenAI; else HuggingFace. Never use a provider without its key."""
+    """Use provider from .env or auto-detect based on available keys."""
     provider = (os.getenv("LLM_PROVIDER") or "").strip().lower()
     has_gemini = bool(os.getenv("GEMINI_API_KEY"))
     has_openai = bool(os.getenv("OPENAI_API_KEY"))
     has_hf = bool(os.getenv("HUGGINGFACE_API_KEY"))
 
+    # Explicitly requested provider
     if provider == "gemini" and has_gemini:
         return GeminiClient()
     if provider == "openai" and has_openai:
-        return OpenAIClient()
+        return OpenAIClient(model="gpt-4o-mini")
     if provider == "huggingface" and has_hf:
         return HuggingFaceClient()
 
-    # Auto-detect: prefer Gemini (common for portfolio chatbots)
+    # Default logic: Gemini is preferred now because it has a better free tier for tools
     if has_gemini:
         return GeminiClient()
     if has_openai:
-        return OpenAIClient()
+        return OpenAIClient(model="gpt-4o-mini")
     if has_hf:
         return HuggingFaceClient()
 
-    print("Warning: No LLM API key found. Set GEMINI_API_KEY (or OPENAI_API_KEY) on Render.")
-    # Return a no-op client that gives a clear message (avoids HuggingFace/OpenAI errors when no key)
+    print("Warning: No LLM API key found. Defaulting to empty fallback.")
     class NoKeyClient(LLMClient):
         def generate_response(self, prompt: str, system_prompt: str) -> str:
-            return "The assistant is not configured: add GEMINI_API_KEY (or OPENAI_API_KEY) in Render → Environment Variables, then redeploy."
+            return "The assistant is not configured: add GEMINI_API_KEY (Free at Google AI Studio) to your .env file."
     return NoKeyClient()

@@ -143,4 +143,6 @@ __pycache__/
 *.py[cod]
 *.pickle
 backend/vectordb/
+backend/venv/
 venv/
+.env

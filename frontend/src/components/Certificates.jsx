@@ -276,6 +276,30 @@ const certificateItems = [
     tags: ['Generative AI']
   },
   {
+    id: 'aws-genai',
+    category: 'achievements',
+    title: 'AWS Educate Introduction to Generative AI',
+    issuer: 'AWS Educate (Credly Badge)',
+    date: '2025',
+    summary: 'Badge for demonstrating foundational knowledge of Generative AI concepts and use cases on AWS.',
+    type: 'image',
+    asset: 'aws-educate-introduction-to-generative-ai-training-.png',
+    url: 'https://www.credly.com/badges/030fdd55-43a2-42f0-b26a-154488f6bd9d/public_url',
+    tags: ['AWS', 'Generative AI']
+  },
+  {
+    id: 'aws-ml-foundations',
+    category: 'achievements',
+    title: 'AWS Educate Machine Learning Foundations',
+    issuer: 'AWS Educate (Credly Badge)',
+    date: '2025',
+    summary: 'Badge for completing hands-on foundational machine learning workflows and pipelines on AWS.',
+    type: 'image',
+    asset: 'aws-educate-machine-learning-foundations-training-b.png',
+    url: 'https://www.credly.com/badges/08ac5a24-ede2-420e-8d15-7a2c3f1b4f52/public_url',
+    tags: ['AWS', 'Machine Learning']
+  },
+  {
     id: 'kaggle-python',
     category: 'achievements',
     title: 'Python Programming',
@@ -549,11 +573,10 @@ const Certificates = () => {
               key={filter.id}
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveFilter(filter.id)}
-              className={`px-4 py-2 rounded-full text-sm md:text-base font-medium transition-all border ${
-                activeFilter === filter.id
-                  ? 'bg-primary-600 border-primary-600 text-white shadow-lg shadow-primary-500/30'
-                  : 'bg-white dark:bg-dark-900 border-gray-200 dark:border-dark-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-800'
-              }`}
+              className={`px-4 py-2 rounded-full text-sm md:text-base font-medium transition-all border ${activeFilter === filter.id
+                ? 'bg-primary-600 border-primary-600 text-white shadow-lg shadow-primary-500/30'
+                : 'bg-white dark:bg-dark-900 border-gray-200 dark:border-dark-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-dark-800'
+                }`}
             >
               {filter.label}
               <span className="ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-gray-100 dark:bg-dark-800 text-gray-600 dark:text-gray-400">
@@ -619,6 +642,17 @@ const Certificates = () => {
                         <Download size={16} />
                         Save Copy
                       </a>
+                      {current.url && (
+                        <a
+                          href={current.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary-200 dark:border-primary-800 bg-transparent text-primary-600 dark:text-primary-300 font-medium hover:bg-primary-50 dark:hover:bg-primary-900/30 transition-colors"
+                        >
+                          <Sparkles size={16} />
+                          Verify Badge
+                        </a>
+                      )}
                     </div>
                   </div>
 
@@ -697,11 +731,10 @@ const Certificates = () => {
                   <button
                     key={item.id}
                     onClick={() => goTo(idx)}
-                    className={`w-3 h-3 rounded-full transition-all ${
-                      idx === currentIndex
-                        ? 'bg-primary-600 scale-125'
-                        : 'bg-gray-300 dark:bg-dark-700 hover:bg-primary-400'
-                    }`}
+                    className={`w-3 h-3 rounded-full transition-all ${idx === currentIndex
+                      ? 'bg-primary-600 scale-125'
+                      : 'bg-gray-300 dark:bg-dark-700 hover:bg-primary-400'
+                      }`}
                     aria-label={`Go to ${item.title}`}
                   />
                 ))}
@@ -745,9 +778,8 @@ const Certificates = () => {
                         className="rounded-3xl border border-gray-200 dark:border-dark-700 bg-white dark:bg-dark-900 shadow-md hover:shadow-xl transition-all group"
                       >
                         <div
-                          className={`rounded-t-3xl p-4 text-white bg-gradient-to-r ${
-                            category?.accent ?? 'from-primary-500 to-primary-700'
-                          } flex items-center gap-3`}
+                          className={`rounded-t-3xl p-4 text-white bg-gradient-to-r ${category?.accent ?? 'from-primary-500 to-primary-700'
+                            } flex items-center gap-3`}
                         >
                           <CategoryIcon size={18} />
                           <span className="text-sm font-semibold">{category?.label ?? 'Credential'}</span>
