@@ -165,9 +165,9 @@ const Footer = () => {
               <span className="text-white font-bold text-sm">AI</span>
             </div>
             <div>
-              <h5 className="text-white font-semibold">Personal AI Assistant Available!</h5>
+              <h5 className="text-white font-semibold">TVA Assistant v1.0 is Live! 🚀</h5>
               <p className="text-gray-300 text-sm">
-                Variant 2.0 Loading... ⏳. Stay tuned for timeline updates and more interactive features!
+                My personalized AI variant is now fully operational with RAG and real-time context. Ask it anything about my journey!
               </p>
             </div>
           </div>
