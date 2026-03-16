@@ -164,11 +164,40 @@ const Footer = () => {
             <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">AI</span>
             </div>
-            <div>
-              <h5 className="text-white font-semibold">TVA Assistant v1.0 is Live! 🚀</h5>
-              <p className="text-gray-300 text-sm">
-                My personalized AI variant is now fully operational with RAG and real-time context. Ask it anything about my journey!
-              </p>
+            <div className="flex-1">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <h5 className="text-white font-semibold">TVA Assistant v1.0 is Live! 🚀</h5>
+                  <p className="text-gray-300 text-xs">
+                    My personalized AI variant is now fully operational with RAG and real-time context.
+                  </p>
+                </div>
+                <span className="px-2 py-0.5 bg-green-500/20 text-green-400 text-[10px] font-bold rounded border border-green-500/30 uppercase tracking-tighter">
+                  Stable
+                </span>
+              </div>
+              
+              {/* Roadmap / Evolution Tracker */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 pt-4 border-t border-white/10 text-[11px]">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 rounded-full border border-green-500 flex items-center justify-center text-[8px] text-green-500">✓</div>
+                  <span className="text-gray-400">Phase 4: RAG Implementation <span className="text-green-500">(Done)</span></span>
+                </div>
+                <div className="flex items-center gap-2 text-primary-400 font-medium">
+                  <div className="w-4 h-4 rounded-full border border-primary-500 flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
+                  </div>
+                  <span>Phase 5: Collaborative Agents <span className="animate-pulse">(Loading...)</span></span>
+                </div>
+                <div className="flex items-center gap-2 opacity-50">
+                  <div className="w-4 h-4 rounded-full border border-gray-500 flex items-center justify-center text-[8px]">⌛</div>
+                  <span className="text-gray-400 text-xs">Phase 6: Multi-Modal Voice AI</span>
+                </div>
+                <div className="flex items-center gap-2 opacity-30">
+                  <div className="w-4 h-4 rounded-full border border-gray-500 flex items-center justify-center text-[8px]">?</div>
+                  <span className="text-gray-400 text-xs">Phase 7: Autonomous Debugging</span>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
