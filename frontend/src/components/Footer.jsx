@@ -177,25 +177,16 @@ const Footer = () => {
                 </span>
               </div>
               
-              {/* Roadmap / Evolution Tracker */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 pt-4 border-t border-white/10 text-[11px]">
+              <div className="flex flex-col sm:flex-row gap-4 mt-4 pt-4 border-t border-white/10 text-[11px]">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded-full border border-green-500 flex items-center justify-center text-[8px] text-green-500">✓</div>
-                  <span className="text-gray-400">Phase 4: RAG Implementation <span className="text-green-500">(Done)</span></span>
+                  <span className="text-gray-400">Current: TVA Assistant v1.0 <span className="text-green-500">(Stable)</span></span>
                 </div>
                 <div className="flex items-center gap-2 text-primary-400 font-medium">
                   <div className="w-4 h-4 rounded-full border border-primary-500 flex items-center justify-center">
                     <div className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse" />
                   </div>
-                  <span>Phase 5: Collaborative Agents <span className="animate-pulse">(Loading...)</span></span>
-                </div>
-                <div className="flex items-center gap-2 opacity-50">
-                  <div className="w-4 h-4 rounded-full border border-gray-500 flex items-center justify-center text-[8px]">⌛</div>
-                  <span className="text-gray-400 text-xs">Phase 6: Multi-Modal Voice AI</span>
-                </div>
-                <div className="flex items-center gap-2 opacity-30">
-                  <div className="w-4 h-4 rounded-full border border-gray-500 flex items-center justify-center text-[8px]">?</div>
-                  <span className="text-gray-400 text-xs">Phase 7: Autonomous Debugging</span>
+                  <span>Next: Variant 2.0 <span className="animate-pulse">(In Development...)</span></span>
                 </div>
               </div>
             </div>
