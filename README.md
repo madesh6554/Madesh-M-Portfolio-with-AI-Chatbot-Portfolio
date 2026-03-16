@@ -8,6 +8,24 @@ The portfolio highlights:
 - Internship work on **EDA, feature engineering, model training, and reporting**.
 - Interactive **visualizations and dashboards** (Tableau, Plotly, Matplotlib/Seaborn).
 - A clean, recruiter‑friendly UI with animations, responsive design, and multiple role‑based resumes.
+- **Advanced AI Chatbot (TVA Assistant)**: Context-aware AI powered by RAG and dynamic live data.
+
+---
+
+## 🚀 Portfolio Evolution (v1.0.0)
+
+This project has evolved through several key stages of innovation:
+
+1.  **Phase 1: Simple Start** - A clean, responsive portfolio to showcase basic projects and contact information.
+2.  **Phase 2: Interactive Visuals** - Integrated dynamic charts (Chart.js) and animated skill bars to provide a visual breakdown of technical proficiency.
+3.  **Phase 3: Personalized AI Chatbot** - Introduced the **TVA Assistant**, a custom-themed AI mascot (inspired by Loki's Miss Minutes) to engage visitors.
+4.  **Phase 4: RAG Implementation** - Implemented **Retrieval-Augmented Generation**, enabling the AI to read and answer questions using my actual resume, project details, and experience documents.
+5.  **Phase 5: MCP Integration (Dynamic Context)** - Finalized the "Model Context Protocol" equivalent by connecting the AI to live data. The chatbot now dynamically fetches:
+    *   **Live GitHub Repositories**: Real-time project updates.
+    *   **LinkedIn Profile**: Direct professional connection and headline info.
+    *   **Portfolio Database**: Live curated project data from the backend.
+
+---
 
 ---
 
