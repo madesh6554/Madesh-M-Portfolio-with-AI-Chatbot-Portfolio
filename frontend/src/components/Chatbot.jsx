@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { Send, Minimize2, MessageSquare, Loader2, Volume2, VolumeX } from 'lucide-react';
+import { Send, Minimize2, MessageSquare, Loader2, Volume2, VolumeX, Mic, MicOff } from 'lucide-react';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +12,8 @@ const Chatbot = () => {
     const [inputValue, setInputValue] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
+    const [isListening, setIsListening] = useState(false);
+    const recognitionRef = useRef(null);
 
     const idleTimerRef = useRef(null);
     const messagesEndRef = useRef(null);
@@ -49,11 +51,18 @@ const Chatbot = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
-    // --- CLICK OUTSIDE TO CLOSE ---
+    // --- CLICK OUTSIDE TO CLOSE / STOP MIC ---
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (chatbotRef.current && !chatbotRef.current.contains(event.target) && isOpen) {
-                setIsOpen(false);
+            if (chatbotRef.current && !chatbotRef.current.contains(event.target)) {
+                // If chatbot is open, close it
+                if (isOpen) setIsOpen(false);
+                
+                // If mic is active, stop it
+                if (isListening && recognitionRef.current) {
+                    recognitionRef.current.stop();
+                    setIsListening(false);
+                }
             }
         };
 
@@ -61,7 +70,7 @@ const Chatbot = () => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [isOpen]);
+    }, [isOpen, isListening]);
     
     // --- TEXT TO SPEECH ---
     const speak = useCallback((text) => {
@@ -70,20 +79,155 @@ const Chatbot = () => {
         // Cancel any ongoing speech
         window.speechSynthesis.cancel();
         
-        // Basic clean up of markdown formatting for cleaner speech
+        // Basic clean up of markdown formatting
         const cleanText = text
-            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // remove markdown links
-            .replace(/[*#_~`]/g, '') // remove markdown symbols
-            .replace(/>/g, ''); // remove blockquote markers
+            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') 
+            .replace(/[*#_~`]/g, '') 
+            .replace(/>/g, ''); 
 
-        const utterance = new SpeechSynthesisUtterance(cleanText);
+        // Split text into sentences to add "expression" via variations in pitch/rate
+        const sentences = cleanText.match(/[^.!?]+[.!?]+|\S+/g) || [cleanText];
         
-        // Optional: Customization
-        utterance.rate = 1.0;
-        utterance.pitch = 1.1; // Slightly higher pitch for the TVA variant
-        
-        window.speechSynthesis.speak(utterance);
+        const voices = window.speechSynthesis.getVoices();
+        const preferredVoices = ['Google UK English Female', 'Google US English', 'Microsoft Zira', 'Samantha', 'Victoria'];
+        let selectedVoice = voices.find(v => preferredVoices.some(p => v.name.includes(p))) || voices.find(v => v.name.toLowerCase().includes('female'));
+
+        sentences.forEach((sentence) => {
+            const utterance = new SpeechSynthesisUtterance(sentence.trim());
+            if (selectedVoice) utterance.voice = selectedVoice;
+
+            // --- EXPRESSION LOGIC ---
+            // If the sentence ends in '!', make it sound excited (higher pitch/rate)
+            if (sentence.includes('!')) {
+                utterance.pitch = 1.25;
+                utterance.rate = 1.1;
+            } 
+            // If it's a question, raise the pitch slightly at the end
+            else if (sentence.includes('?')) {
+                utterance.pitch = 1.15;
+                utterance.rate = 1.0;
+            }
+            // Default "sweet" tone
+            else {
+                utterance.pitch = 1.1;
+                utterance.rate = 1.05;
+            }
+
+            window.speechSynthesis.speak(utterance);
+        });
     }, [isVoiceEnabled]);
+
+    // Ensure voices are loaded (browsers often load them asynchronously)
+    useEffect(() => {
+        if (typeof window !== 'undefined' && window.speechSynthesis) {
+            window.speechSynthesis.getVoices();
+        }
+    }, []);
+
+    // --- SPEECH TO TEXT (STT) ---
+    useEffect(() => {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition && !recognitionRef.current) {
+            try {
+                const recognition = new SpeechRecognition();
+                recognition.continuous = true;
+                recognition.interimResults = true;
+                recognition.lang = 'en-US';
+
+                recognition.onresult = (event) => {
+                    const transcript = Array.from(event.results)
+                        .map(result => result[0])
+                        .map(result => result.transcript)
+                        .join('');
+                    setInputValue(transcript);
+                };
+
+                recognition.onend = () => {
+                    setIsListening(false);
+                };
+
+                recognition.onerror = (event) => {
+                    console.error("Speech recognition error:", event.error);
+                    setIsListening(false);
+                    if (event.error === 'not-allowed') {
+                        alert("Microphone access was denied. Please enable it in your browser settings to use voice typing.");
+                    }
+                };
+
+                recognitionRef.current = recognition;
+            } catch (err) {
+                console.error("Failed to initialize Speech Recognition:", err);
+            }
+        }
+    }, []);
+
+    const toggleListening = () => {
+        if (!recognitionRef.current) {
+            alert("Speech recognition is not supported in this browser (it works best in Chrome).");
+            return;
+        }
+
+        try {
+            if (isListening) {
+                recognitionRef.current.stop();
+                setIsListening(false);
+                
+                // --- AUTO-SEND LOGIC ---
+                // If there is captured text, send it immediately after stopping
+                if (inputValue.trim()) {
+                    sendMessage(inputValue.trim());
+                    setInputValue("");
+                }
+            } else {
+                setInputValue(""); // Clear for new recording
+                try {
+                    recognitionRef.current.start();
+                    setIsListening(true);
+                } catch (e) {
+                    if (e.name === 'InvalidStateError') {
+                        setIsListening(true);
+                    } else {
+                        throw e;
+                    }
+                }
+            }
+        } catch (error) {
+            console.error("Error toggling speech recognition:", error);
+            setIsListening(false);
+        }
+    };
+
+    // --- VOICE WAVEFORM COMPONENT (Multi-color ChatGPT Style) ---
+    const VoiceWaveform = () => {
+        const colors = [
+            'bg-blue-400', 
+            'bg-cyan-400', 
+            'bg-purple-400', 
+            'bg-pink-400', 
+            'bg-indigo-400'
+        ];
+        
+        return (
+            <div className="flex items-center justify-center gap-[3px] h-6 px-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                    <motion.div
+                        key={i}
+                        animate={{
+                            height: [6, 22, 10, 26, 6],
+                            opacity: [0.6, 1, 0.8, 1, 0.6]
+                        }}
+                        transition={{
+                            duration: 0.8,
+                            repeat: Infinity,
+                            delay: i * 0.12,
+                            ease: "easeInOut"
+                        }}
+                        className={`w-[3px] ${colors[i-1]} rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]`}
+                    />
+                ))}
+            </div>
+        );
+    };
 
     // Handle turning off voice mid-speech
     useEffect(() => {
@@ -405,20 +549,49 @@ const Chatbot = () => {
 
                         {/* Input */}
                         <form onSubmit={handleSend} className="p-4 bg-black/40 border-t border-white/10 backdrop-blur-md">
-                            <div className="relative flex items-center">
-                                <input
-                                    type="text"
-                                    value={inputValue}
-                                    onChange={(e) => setInputValue(e.target.value)}
-                                    placeholder="Ask the variant..."
-                                    className="w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl py-3 pl-4 pr-12 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent transition-all"
-                                />
+                            <div className="relative flex items-center gap-2">
+                                <div className="relative flex-1">
+                                    <div className="relative flex items-center">
+                                        <input
+                                            type="text"
+                                            value={inputValue}
+                                            onChange={(e) => setInputValue(e.target.value)}
+                                            placeholder={isListening ? "Listening..." : "Ask the variant..."}
+                                            className={`w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl py-3 pl-4 pr-12 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent transition-all ${isListening ? 'ring-2 ring-red-500/30 bg-red-500/5' : ''}`}
+                                        />
+                                        
+                                        {/* Waveform Animation Overlay when listening */}
+                                        {isListening && (
+                                            <div className="absolute right-12 top-1/2 -translate-y-1/2 flex items-center">
+                                                <VoiceWaveform />
+                                            </div>
+                                        )}
+
+                                        <button
+                                            type="button"
+                                            onClick={toggleListening}
+                                            className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-lg transition-all ${isListening ? 'text-red-500 bg-red-500/20' : 'text-white/40 hover:text-white hover:bg-white/10'}`}
+                                            title={isListening ? "Stop & Send" : "Start Voice Typing"}
+                                        >
+                                            {isListening ? (
+                                                <motion.div
+                                                    animate={{ scale: [1, 1.2, 1] }}
+                                                    transition={{ duration: 1, repeat: Infinity }}
+                                                >
+                                                    <MicOff size={18} />
+                                                </motion.div>
+                                            ) : (
+                                                <Mic size={18} />
+                                            )}
+                                        </button>
+                                    </div>
+                                </div>
                                 <button
                                     type="submit"
                                     disabled={!inputValue.trim() || isLoading}
-                                    className="absolute right-2 p-2 bg-[#3B82F6] text-white rounded-lg hover:bg-[#2563EB] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-[#3B82F6]/20"
+                                    className="p-3 bg-[#3B82F6] text-white rounded-xl hover:bg-[#2563EB] disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg hover:shadow-[#3B82F6]/20"
                                 >
-                                    <Send size={16} />
+                                    <Send size={18} />
                                 </button>
                             </div>
                         </form>
