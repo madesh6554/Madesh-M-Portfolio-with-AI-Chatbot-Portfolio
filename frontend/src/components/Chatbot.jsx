@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { Send, Minimize2, MessageSquare, Loader2 } from 'lucide-react';
+import { Send, Minimize2, MessageSquare, Loader2, Volume2, VolumeX } from 'lucide-react';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +11,7 @@ const Chatbot = () => {
     ]);
     const [inputValue, setInputValue] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
 
     const idleTimerRef = useRef(null);
     const messagesEndRef = useRef(null);
@@ -61,6 +62,35 @@ const Chatbot = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen]);
+    
+    // --- TEXT TO SPEECH ---
+    const speak = useCallback((text) => {
+        if (!isVoiceEnabled || !window.speechSynthesis) return;
+        
+        // Cancel any ongoing speech
+        window.speechSynthesis.cancel();
+        
+        // Basic clean up of markdown formatting for cleaner speech
+        const cleanText = text
+            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // remove markdown links
+            .replace(/[*#_~`]/g, '') // remove markdown symbols
+            .replace(/>/g, ''); // remove blockquote markers
+
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+        
+        // Optional: Customization
+        utterance.rate = 1.0;
+        utterance.pitch = 1.1; // Slightly higher pitch for the TVA variant
+        
+        window.speechSynthesis.speak(utterance);
+    }, [isVoiceEnabled]);
+
+    // Handle turning off voice mid-speech
+    useEffect(() => {
+        if (!isVoiceEnabled && window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+        }
+    }, [isVoiceEnabled]);
 
     // --- API CALL ---
     const sendMessage = async (text, isRetry = false) => {
@@ -100,7 +130,9 @@ const Chatbot = () => {
                 return;
             }
             const data = await response.json();
-            setMessages(prev => [...prev, { text: data.reply || data.error || "No response.", isBot: true }]);
+            const botReply = data.reply || data.error || "No response.";
+            setMessages(prev => [...prev, { text: botReply, isBot: true }]);
+            speak(botReply);
         } catch (error) {
             const isAbort = error.name === 'AbortError';
             const isNetwork = !error.response && (error.message === 'Failed to fetch' || error.message?.includes('NetworkError'));
@@ -112,7 +144,9 @@ const Chatbot = () => {
                     const response = await doFetch();
                     if (response.ok) {
                         const data = await response.json();
-                        setMessages(prev => prev.slice(0, -1).concat([{ text: data.reply || data.error || "No response.", isBot: true }]));
+                        const botReply = data.reply || data.error || "No response.";
+                        setMessages(prev => prev.slice(0, -1).concat([{ text: botReply, isBot: true }]));
+                        speak(botReply);
                         return;
                     }
                 } catch (_) { /* fall through to error message */ }
@@ -282,12 +316,21 @@ const Chatbot = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button
-                                onClick={() => setIsOpen(false)}
-                                className="text-white/80 hover:text-white hover:bg-white/20 p-2 rounded-full transition-all"
-                            >
-                                <Minimize2 size={18} />
-                            </button>
+                            <div className="flex items-center gap-2">
+                                <button
+                                    onClick={() => setIsVoiceEnabled(!isVoiceEnabled)}
+                                    className={`p-2 rounded-full transition-all ${isVoiceEnabled ? 'bg-white/20 text-white' : 'text-white/60 hover:text-white'}`}
+                                    title={isVoiceEnabled ? "Disable Voice" : "Enable Voice"}
+                                >
+                                    {isVoiceEnabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+                                </button>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="text-white/80 hover:text-white hover:bg-white/20 p-2 rounded-full transition-all"
+                                >
+                                    <Minimize2 size={18} />
+                                </button>
+                            </div>
                         </div>
 
                         {/* Messages */}
