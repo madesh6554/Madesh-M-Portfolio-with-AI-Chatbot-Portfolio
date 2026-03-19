@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence, useAnimation } from 'framer-motion';
-import { Send, Minimize2, MessageSquare, Loader2, Volume2, VolumeX, Mic, MicOff } from 'lucide-react';
+import { Send, Minimize2, MessageSquare, Loader2, Volume2, VolumeX, Mic, MicOff, Pencil, Check, X } from 'lucide-react';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +13,9 @@ const Chatbot = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isVoiceEnabled, setIsVoiceEnabled] = useState(false);
     const [isListening, setIsListening] = useState(false);
+    const [speakingIndex, setSpeakingIndex] = useState(null);
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [editValue, setEditValue] = useState("");
     const recognitionRef = useRef(null);
 
     const idleTimerRef = useRef(null);
@@ -57,7 +60,7 @@ const Chatbot = () => {
             if (chatbotRef.current && !chatbotRef.current.contains(event.target)) {
                 // If chatbot is open, close it
                 if (isOpen) setIsOpen(false);
-                
+
                 // If mic is active, stop it
                 if (isListening && recognitionRef.current) {
                     recognitionRef.current.stop();
@@ -71,23 +74,31 @@ const Chatbot = () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, [isOpen, isListening]);
-    
+
     // --- TEXT TO SPEECH ---
-    const speak = useCallback((text) => {
-        if (!isVoiceEnabled || !window.speechSynthesis) return;
-        
+    const speak = useCallback((text, force = false, index = null) => {
+        if ((!isVoiceEnabled && !force) || !window.speechSynthesis) return;
+
+        // If clicking the same message that's currently speaking, stop it
+        if (speakingIndex === index && window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            setSpeakingIndex(null);
+            return;
+        }
+
         // Cancel any ongoing speech
         window.speechSynthesis.cancel();
-        
+        setSpeakingIndex(index);
+
         // Basic clean up of markdown formatting
         const cleanText = text
-            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') 
-            .replace(/[*#_~`]/g, '') 
-            .replace(/>/g, ''); 
+            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+            .replace(/[*#_~`]/g, '')
+            .replace(/>/g, '');
 
         // Split text into sentences to add "expression" via variations in pitch/rate
         const sentences = cleanText.match(/[^.!?]+[.!?]+|\S+/g) || [cleanText];
-        
+
         const voices = window.speechSynthesis.getVoices();
         const preferredVoices = ['Google UK English Female', 'Google US English', 'Microsoft Zira', 'Samantha', 'Victoria'];
         let selectedVoice = voices.find(v => preferredVoices.some(p => v.name.includes(p))) || voices.find(v => v.name.toLowerCase().includes('female'));
@@ -101,7 +112,7 @@ const Chatbot = () => {
             if (sentence.includes('!')) {
                 utterance.pitch = 1.25;
                 utterance.rate = 1.1;
-            } 
+            }
             // If it's a question, raise the pitch slightly at the end
             else if (sentence.includes('?')) {
                 utterance.pitch = 1.15;
@@ -113,9 +124,39 @@ const Chatbot = () => {
                 utterance.rate = 1.05;
             }
 
+            utterance.onend = () => {
+                if (index !== null) setSpeakingIndex(null);
+            };
+
             window.speechSynthesis.speak(utterance);
         });
-    }, [isVoiceEnabled]);
+    }, [isVoiceEnabled, speakingIndex]);
+
+    // --- MESSAGE EDITING ---
+    const handleEdit = (index, text) => {
+        setEditingIndex(index);
+        setEditValue(text);
+    };
+
+    const cancelEdit = () => {
+        setEditingIndex(null);
+        setEditValue("");
+    };
+
+    const saveEdit = async (index) => {
+        if (!editValue.trim()) return;
+
+        // Remove all messages after the edited one to maintain context flow
+        const newMessages = messages.slice(0, index + 1);
+        newMessages[index] = { ...newMessages[index], text: editValue.trim() };
+
+        setMessages(newMessages);
+        setEditingIndex(null);
+        setEditValue("");
+
+        // Re-trigger the AI response
+        await sendMessage(newMessages[index].text, false, true);
+    };
 
     // Ensure voices are loaded (browsers often load them asynchronously)
     useEffect(() => {
@@ -171,7 +212,7 @@ const Chatbot = () => {
             if (isListening) {
                 recognitionRef.current.stop();
                 setIsListening(false);
-                
+
                 // --- AUTO-SEND LOGIC ---
                 // If there is captured text, send it immediately after stopping
                 if (inputValue.trim()) {
@@ -200,13 +241,13 @@ const Chatbot = () => {
     // --- VOICE WAVEFORM COMPONENT (Multi-color ChatGPT Style) ---
     const VoiceWaveform = () => {
         const colors = [
-            'bg-blue-400', 
-            'bg-cyan-400', 
-            'bg-purple-400', 
-            'bg-pink-400', 
+            'bg-blue-400',
+            'bg-cyan-400',
+            'bg-purple-400',
+            'bg-pink-400',
             'bg-indigo-400'
         ];
-        
+
         return (
             <div className="flex items-center justify-center gap-[3px] h-6 px-2">
                 {[1, 2, 3, 4, 5].map((i) => (
@@ -222,7 +263,7 @@ const Chatbot = () => {
                             delay: i * 0.12,
                             ease: "easeInOut"
                         }}
-                        className={`w-[3px] ${colors[i-1]} rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]`}
+                        className={`w-[3px] ${colors[i - 1]} rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]`}
                     />
                 ))}
             </div>
@@ -484,14 +525,65 @@ const Chatbot = () => {
                                     key={i}
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}
+                                    className={`flex flex-col group ${msg.isBot ? 'items-start' : 'items-end'}`}
                                 >
-                                    <div className={`max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed shadow-sm ${msg.isBot
-                                        ? 'bg-white/10 text-white rounded-tl-sm border border-white/5'
-                                        : 'bg-[#3B82F6] text-white rounded-tr-sm shadow-[0_4px_12px_rgba(59,130,246,0.3)]'
-                                        }`}>
-                                        {msg.text}
-                                    </div>
+                                    {editingIndex === i ? (
+                                        <div className="w-full max-w-[85%] bg-white/10 p-2 rounded-2xl border border-[#3B82F6]/50">
+                                            <textarea
+                                                value={editValue}
+                                                onChange={(e) => setEditValue(e.target.value)}
+                                                className="w-full bg-transparent text-white text-sm outline-none resize-none p-2 min-h-[60px]"
+                                                autoFocus
+                                            />
+                                            <div className="flex justify-end gap-2 p-1">
+                                                <button
+                                                    onClick={cancelEdit}
+                                                    className="p-1 px-2 text-xs text-white/40 hover:text-white flex items-center gap-1"
+                                                >
+                                                    <X size={12} /> Cancel
+                                                </button>
+                                                <button
+                                                    onClick={() => saveEdit(i)}
+                                                    className="p-1 px-3 bg-[#3B82F6] text-white text-xs rounded-lg flex items-center gap-1 hover:bg-[#2563EB]"
+                                                >
+                                                    <Check size={12} /> Save
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div className={`relative max-w-[85%] p-3 rounded-2xl text-sm leading-relaxed shadow-sm transition-all group ${msg.isBot
+                                            ? 'bg-white/10 text-white rounded-tl-sm border border-white/5 hover:bg-white/[0.15]'
+                                            : 'bg-[#3B82F6] text-white rounded-tr-sm shadow-[0_4px_12px_rgba(59,130,246,0.3)] hover:bg-[#2563EB]'
+                                            }`}>
+                                            {msg.text}
+                                            
+                                            {/* Edit Icon for User Messages */}
+                                            {!msg.isBot && (
+                                                <button
+                                                    onClick={() => handleEdit(i, msg.text)}
+                                                    className="absolute -left-10 top-1/2 -translate-y-1/2 p-2 text-white/40 opacity-0 group-hover:opacity-100 hover:text-white transition-all hover:scale-110"
+                                                    title="Edit message"
+                                                >
+                                                    <Pencil size={15} />
+                                                </button>
+                                            )}
+
+                                            {/* Listen Button for Bot Messages */}
+                                            {msg.isBot && editingIndex === null && (
+                                                <button
+                                                    onClick={() => speak(msg.text, true, i)}
+                                                    className={`absolute -right-10 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all flex items-center gap-1.5 ${
+                                                        speakingIndex === i 
+                                                        ? 'text-[#3B82F6] opacity-100 shadow-[0_0_10px_rgba(59,130,246,0.3)] bg-[#3B82F6]/10' 
+                                                        : 'text-white/40 opacity-0 group-hover:opacity-100 hover:text-[#3B82F6] hover:scale-110'
+                                                    }`}
+                                                    title={speakingIndex === i ? "Stop" : "Listen"}
+                                                >
+                                                    <Volume2 size={16} className={speakingIndex === i ? 'animate-pulse' : ''} />
+                                                </button>
+                                            )}
+                                        </div>
+                                    )}
                                 </motion.div>
                             ))}
 
@@ -559,7 +651,7 @@ const Chatbot = () => {
                                             placeholder={isListening ? "Listening..." : "Ask the variant..."}
                                             className={`w-full bg-white/5 border border-white/10 text-white placeholder-white/30 rounded-xl py-3 pl-4 pr-12 focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent transition-all ${isListening ? 'ring-2 ring-red-500/30 bg-red-500/5' : ''}`}
                                         />
-                                        
+
                                         {/* Waveform Animation Overlay when listening */}
                                         {isListening && (
                                             <div className="absolute right-12 top-1/2 -translate-y-1/2 flex items-center">
