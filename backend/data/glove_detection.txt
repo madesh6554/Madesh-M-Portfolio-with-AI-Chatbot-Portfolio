@@ -1,0 +1,23 @@
+PROJECT: Glove Shield AI - Safety Compliance System
+CATEGORY: AI & Machine Learning / Computer Vision
+LIVE DEMO: https://gloved-vs-ungloved-hand-detection-m58nfzmdrlkzjxzktms8fm.streamlit.app/
+GITHUB: https://github.com/madesh6554/Gloved-vs-Ungloved-Hand-Detection
+
+OVERVIEW:
+This project implements a robust object detection pipeline to identify whether workers are wearing gloves (glove_hand) or not (bare_hand) in industrial factory environments. It is designed to automate safety compliance monitoring.
+
+TECHNICAL STACK:
+- Model Architecture: YOLOv8n (Ultralytics)
+- Interface: Streamlit (Premium web application dashboard)
+- Data Platform: Roboflow (Annotation & Dataset Management)
+- Libraries: Python, OpenCV, Ultralytics, Streamlit
+
+KEY FEATURES:
+- High Performance: Achieved 92.1% Precision and 91.4% mAP50.
+- Hybrid Dataset: Combines pre-trained datasets with manual field-captured imagery for better generalization in factory settings.
+- Real-time Metrics: The Streamlit dashboard provides instant counts of gloved vs bare hands.
+- Automated Logging: Saves detection results in JSON format for record-keeping.
+- Interactive Interface: Supports image upload, URL input, and a sample gallery for testing.
+
+CHALLENGES OVERCOME:
+The main challenge was handling diverse lighting conditions and backgrounds in factory environments. This was solved by using a hybrid dataset approach and specific augmentations like horizontal flips, rotation, and brightness adjustments.

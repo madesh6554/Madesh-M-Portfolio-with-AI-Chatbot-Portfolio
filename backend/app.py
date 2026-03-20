@@ -104,6 +104,17 @@ PROJECTS = [
         "github": "https://github.com/madesh/object-detection",
         "demo": "https://object-detection-demo.herokuapp.com",
         "featured": False
+    },
+    {
+        "id": 7,
+        "title": "Glove Shield AI: Safety Compliance System",
+        "description": "An end-to-end computer vision pipeline using YOLOv8 to detect gloved vs. bare hands in industrial environments. Features a real-time Streamlit dashboard for monitoring safety compliance with 92% precision.",
+        "image": "https://img.freepik.com/free-photo/worker-wearing-gloves-hand-protection-safety-concept_53876-133748.jpg",
+        "technologies": ["Python", "YOLOv8", "Streamlit", "OpenCV", "Roboflow"],
+        "category": "ai_ml",
+        "github": "https://github.com/madesh6554/Gloved-vs-Ungloved-Hand-Detection",
+        "demo": "https://gloved-vs-ungloved-hand-detection-m58nfzmdrlkzjxzktms8fm.streamlit.app/",
+        "featured": True
     }
 ]
 
