@@ -28,6 +28,7 @@ import n8nTechNewsShot1 from '../assests/n8n workflow/AI-Powered Daily Tech News
 import n8nTechNewsShot2 from '../assests/n8n workflow/AI-Powered Daily Tech News Automation (n8n)/Screenshot (428).png';
 import n8nMovieBotShot1 from '../assests/n8n workflow/Movie Recommendation Automation Bot (n8n + Telegram)/Screenshot (443).png';
 import n8nMovieBotVideo from '../assests/n8n workflow/Movie Recommendation Automation Bot (n8n + Telegram)/Screen Recording 2026-02-26 214002 (online-video-cutter.com).mp4';
+import gloveShieldImage from '../assests/_6910bc27-4bc6-4d22-9b23-eed6976b14c4.jpg';
 
 // ProjectCard Component
 const ProjectCard = ({ project, type, onCardClick }) => {
@@ -1248,6 +1249,31 @@ const Projects = () => {
         'Workflow outline:\\n1) Trigger (weekend schedule/manual)\\n2) Fetch latest movies\\n3) Filter by rating/votes/popularity\\n4) Compute score + rank\\n5) Gemini: summary + vibe + audience\\n6) Telegram: send poster + top picks',
       additionalInfo:
         'Result:\\n• More watching 🍿\\n• Less scrolling 📱\\n• Zero arguments 😎\\n\\nNext:\\n• Trailer preview integration\\n• Comment sentiment analysis\\n• Personalized taste learning'
+    },
+    {
+      id: 12,
+      title: 'Glove Shield AI: Safety Compliance System',
+      description: 'An end-to-end computer vision pipeline using YOLOv8 to detect gloved vs. bare hands in industrial environments with 92% precision.',
+      extendedDescription: 'Glove Shield AI is a specialized computer vision solution designed for industrial safety compliance. Using the YOLOv8 architecture, the system accurately distinguishes between workers wearing protective gloves and those with bare hands. This project demonstrates a complete ML pipeline from data collection (hybrid dataset from Roboflow and field captures) to real-time deployment.\n\nThe system includes automated logging of safety violations and a premium Streamlit dashboard for real-time monitoring and visualization of detection metrics.',
+      image: gloveShieldImage,
+      tags: ['Computer Vision', 'YOLOv8', 'Safety AI'],
+      technologies: ['Python', 'YOLOv8', 'Streamlit', 'OpenCV', 'Roboflow', 'Dataset Augmentation'],
+      github: 'https://github.com/madesh6554/Gloved-vs-Ungloved-Hand-Detection',
+      demo: 'https://gloved-vs-ungloved-hand-detection-m58nfzmdrlkzjxzktms8fm.streamlit.app/',
+      featured: true,
+      metrics: [
+        { label: 'Precision', value: '92.1%' },
+        { label: 'mAP50', value: '91.4%' },
+        { label: 'Model', value: 'YOLOv8n' }
+      ],
+      features: [
+        'Real-time Detection: Identifies gloved vs. bare hands in video/image streams',
+        'Streamlit Dashboard: Premium interface for monitoring and testing',
+        'Hybrid Dataset: Mixed Roboflow data with field-captured imagery for robustness',
+        'Automated Logging: Saves detection metadata in JSON format for compliance audits',
+        'Visual Feedback: Dynamic bounding boxes with confidence scores'
+      ],
+      additionalInfo: 'Project Overview:\n• Purpose: Workplace safety monitoring for hand protection compliance\n• Dataset: 640x640 resolution with rotation and brightness augmentations\n• Accuracy: Robust performance across diverse lighting conditions and factory backgrounds\n\nTechnologies:\n• Computer Vision: Ultralytics YOLOv8n\n• UI Framework: Streamlit\n• Data Prep: Roboflow platform'
     }
   ];
 
