@@ -75,6 +75,7 @@ const Chatbot = () => {
         };
     }, [isOpen, isListening]);
 
+
     // --- TEXT TO SPEECH ---
     const speak = useCallback((text, force = false, index = null) => {
         if ((!isVoiceEnabled && !force) || !window.speechSynthesis) return;
@@ -345,6 +346,23 @@ const Chatbot = () => {
             setIsLoading(false);
         }
     };
+
+    // --- EXTERNAL TRIGGER: OPEN PROJECT CHAT ---
+    useEffect(() => {
+        const handleOpenProjectChat = (event) => {
+            const { projectTitle } = event.detail;
+            setIsOpen(true);
+            setEmotion('excited');
+            resetIdleTimer();
+            // Use a small delay to ensure the window is open before sending
+            setTimeout(() => {
+                sendMessage(`Tell me about the ${projectTitle} project.`);
+            }, 600);
+        };
+
+        window.addEventListener('openProjectChat', handleOpenProjectChat);
+        return () => window.removeEventListener('openProjectChat', handleOpenProjectChat);
+    }, [sendMessage, resetIdleTimer]);
 
     const handleSend = async (e) => {
         e.preventDefault();

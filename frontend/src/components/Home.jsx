@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown, X, FileText, Briefcase, Brain, BarChart3, TrendingUp, CheckCircle, Cpu, Atom, Sparkles } from 'lucide-react';
+import { ArrowRight, Download, Github, Linkedin, Mail, ChevronDown, X, FileText, Briefcase, Brain, BarChart3, TrendingUp, CheckCircle, Cpu, Atom, Sparkles, Trophy } from 'lucide-react';
 import profileImage from '../assests/ChatGPT Image Jan 6, 2026, 04_11_57 PM.png';
 import AnimatedParticlesBackground from './AnimatedParticlesBackground';
 
@@ -83,6 +83,7 @@ const Home = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/madesh6554', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/madesh-m-15037b273', label: 'LinkedIn' },
+    { icon: Trophy, href: 'https://www.kaggle.com/madesh6554', label: 'Kaggle' },
     { icon: Mail, href: 'mailto:madesh6554@gmail.com', label: 'Email' },
   ];
 

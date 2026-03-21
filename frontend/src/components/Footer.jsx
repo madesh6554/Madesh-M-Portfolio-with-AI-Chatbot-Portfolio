@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart, Twitter } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Twitter, Trophy } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,6 +8,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/madesh6554', label: 'GitHub' },
     { icon: Linkedin, href: 'https://linkedin.com/in/madesh-m-15037b273', label: 'LinkedIn' },
+    { icon: Trophy, href: 'https://www.kaggle.com/madesh6554', label: 'Kaggle' },
     { icon: Twitter, href: 'https://x.com/ChoCoKingMadesh', label: 'Twitter' },
     { icon: Mail, href: 'mailto:madesh6554@gmail.com', label: 'Email' },
   ];

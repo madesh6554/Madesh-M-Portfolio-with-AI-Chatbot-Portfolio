@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, LayoutGrid } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import ProjectLauncher from './ProjectLauncher';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -97,9 +98,10 @@ const Navbar = () => {
               </motion.button>
             ))}
           </div>
-
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
+          {/* Theme Toggle, Project Launcher & Mobile Menu Button */}
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <ProjectLauncher />
+            
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
