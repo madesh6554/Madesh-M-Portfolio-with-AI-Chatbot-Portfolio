@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Contact from './components/Contact';
 import Chatbot from './components/Chatbot';
+import QuoteSection from './components/QuoteSection';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           <section id="home">
             <Home />
           </section>
+
+          <QuoteSection />
 
           <section id="about">
             <About />
