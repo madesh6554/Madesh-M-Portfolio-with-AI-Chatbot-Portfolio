@@ -51,6 +51,20 @@ const QuoteSection = () => {
             </span>"
           </h2>
 
+          {/* Attribution */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 1.8, duration: 0.8 }}
+            className="flex flex-col items-center gap-3 pt-2"
+          >
+            <div className="h-px w-10 bg-gray-300 dark:bg-gray-600 rounded-full" />
+            <p className="text-sm font-medium text-gray-400 dark:text-gray-500 tracking-widest uppercase">
+              — Romans 8:28
+            </p>
+          </motion.div>
+
         </motion.div>
       </div>
 
