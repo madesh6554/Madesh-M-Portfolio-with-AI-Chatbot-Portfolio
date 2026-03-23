@@ -38,6 +38,7 @@ const Home = () => {
     'Analytics Consultant',
     'Data Storyteller',
     'Research Data Scientist',
+    'Data Annotator',
   ], []);
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');

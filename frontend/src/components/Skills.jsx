@@ -47,6 +47,7 @@ const Skills = () => {
         { name: 'OpenCV', level: 82, color: '#5c3ee8' },
         { name: 'Pandas', level: 95, color: '#150458' },
         { name: 'NumPy', level: 92, color: '#4d77cf' },
+        { name: 'Image Labeling & Annotation', level: 85, color: '#e53e3e' },
       ]
     },
     visualization: {
@@ -73,6 +74,7 @@ const Skills = () => {
         { name: 'Whisper / TTS (ElevenLabs)', level: 70, color: '#22c55e' },
         { name: 'Node.js / Express / Firebase', level: 70, color: '#339933' },
         { name: 'n8n (Automation Workflows)', level: 80, color: '#10b981' },
+        { name: 'Roboflow (Dataset Management)', level: 82, color: '#6366f1' },
       ]
     }
   };
