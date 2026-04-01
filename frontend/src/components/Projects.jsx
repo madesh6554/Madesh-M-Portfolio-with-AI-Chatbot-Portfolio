@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Eye, CheckCircle2, Clock, Lightbulb, X, Code, Globe, FileText, Download, MessageSquareCode } from 'lucide-react';
+import { ExternalLink, Github, Eye, CheckCircle2, Clock, Lightbulb, X, Code, Globe, FileText, Download, MessageSquareCode, LayoutGrid, List, ChevronDown, ChevronUp } from 'lucide-react';
 import { completedProjects, ongoingProjects, upcomingProjects } from '../data/projectsData';
 import ProjectSpotlight from './ProjectSpotlight';
 
@@ -794,6 +794,18 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showAllCompleted, setShowAllCompleted] = useState(false);
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
+  const completedSectionRef = useRef(null);
+
+  const INITIAL_SHOW = 3;
+
+  // Priority order: these 3 projects always appear first
+  const PINNED_IDS = [1, 4, 2]; // AI ModelHub, Image Caption, Satellite Digital Twin
+  const sortedCompleted = [
+    ...PINNED_IDS.map(id => completedProjects.find(p => p.id === id)).filter(Boolean),
+    ...completedProjects.filter(p => !PINNED_IDS.includes(p.id)),
+  ];
 
   // Projects data imported from projectsData.js
 
@@ -954,25 +966,173 @@ const Projects = () => {
             <motion.div variants={itemVariants} className="space-y-12">
               {/* Section Header */}
           {activeFilter === 'all' && (
-                <>
+                <> 
                   {/* Completed Projects Section */}
                   {completedProjects.length > 0 && (
                     <div className="space-y-6">
-                      <div className="flex items-center gap-3">
+                      {/* Section Header with View Toggle */}
+                      <div ref={completedSectionRef} className="flex flex-wrap items-center gap-3">
                         <CheckCircle2 className="text-primary-600 dark:text-primary-400" size={28} />
                         <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                           Completed Projects
-              </h2>
+                        </h2>
                         <span className="px-3 py-1 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 text-sm rounded-full">
                           {completedProjects.length}
                         </span>
+                        {/* View Mode Toggle */}
+                        <div className="ml-auto flex items-center gap-1 p-1 bg-gray-100 dark:bg-dark-700 rounded-xl">
+                          <motion.button
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => setViewMode('grid')}
+                            className={`p-2 rounded-lg transition-all ${
+                              viewMode === 'grid'
+                                ? 'bg-white dark:bg-dark-600 shadow text-primary-600 dark:text-primary-400'
+                                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                            }`}
+                            title="Grid view"
+                          >
+                            <LayoutGrid size={18} />
+                          </motion.button>
+                          <motion.button
+                            whileTap={{ scale: 0.9 }}
+                            onClick={() => setViewMode('list')}
+                            className={`p-2 rounded-lg transition-all ${
+                              viewMode === 'list'
+                                ? 'bg-white dark:bg-dark-600 shadow text-primary-600 dark:text-primary-400'
+                                : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'
+                            }`}
+                            title="List view"
+                          >
+                            <List size={18} />
+                          </motion.button>
                         </div>
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {completedProjects.map((project) => (
-                          <ProjectCard key={project.id} project={project} type="completed" onCardClick={handleProjectClick} />
-                        ))}
                       </div>
-                    </div>
+
+                      {/* Project Cards */}
+                      <AnimatePresence>
+                        {viewMode === 'grid' ? (
+                          <div>
+                            <motion.div
+                              key="grid"
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                            >
+                              {(showAllCompleted ? sortedCompleted : sortedCompleted.slice(0, INITIAL_SHOW)).map((project) => (
+                                <ProjectCard key={project.id} project={project} type="completed" onCardClick={handleProjectClick} />
+                              ))}
+                            </motion.div>
+
+                            {/* 📦 Peeking hidden project cards — clipped + darkened */}
+                            {!showAllCompleted && sortedCompleted.length > INITIAL_SHOW && (
+                              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+                                {sortedCompleted.slice(INITIAL_SHOW, INITIAL_SHOW + 3).map((project, i) => (
+                                  <div
+                                    key={project.id}
+                                    className="relative overflow-hidden rounded-2xl cursor-pointer"
+                                    style={{
+                                      maxHeight: '140px',
+                                      opacity: 1 - i * 0.2,
+                                      transform: `scale(${1 - i * 0.012})`,
+                                      transformOrigin: 'top center',
+                                    }}
+                                    onClick={() => {
+                                      setShowAllCompleted(true);
+                                    }}
+                                  >
+                                    {/* The actual card rendered but clipped */}
+                                    <div className="pointer-events-none">
+                                      <ProjectCard project={project} type="completed" onCardClick={null} />
+                                    </div>
+                                    {/* Dark overlay — lighter at top so image is visible, heavy at bottom */}
+                                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black/95 rounded-2xl" />
+                                    {/* Hidden label */}
+                                    <div className="absolute inset-0 flex items-end justify-center pb-3">
+                                      <span className="flex items-center gap-1 text-white/70 text-xs font-semibold tracking-widest uppercase">
+                                        <ChevronDown size={13} className="animate-bounce" /> Click to reveal
+                                      </span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <motion.div
+                            key="list"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="space-y-3"
+                          >
+                            {(showAllCompleted ? sortedCompleted : sortedCompleted.slice(0, INITIAL_SHOW)).map((project) => (
+                              <motion.div
+                                key={project.id}
+                                whileHover={{ x: 4 }}
+                                onClick={() => handleProjectClick(project)}
+                                className="flex items-center gap-4 p-4 bg-white dark:bg-dark-800 rounded-2xl border border-gray-200 dark:border-dark-700 shadow-sm hover:shadow-md hover:border-primary-300 dark:hover:border-primary-700 transition-all cursor-pointer group"
+                              >
+                                {project.image && (
+                                  <img src={project.image} alt={project.title} className="w-16 h-16 rounded-xl object-cover flex-shrink-0" />
+                                )}
+                                <div className="flex-1 min-w-0">
+                                  <h3 className="font-bold text-gray-900 dark:text-white truncate group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{project.title}</h3>
+                                  <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">{project.description}</p>
+                                  <div className="flex flex-wrap gap-1 mt-2">
+                                    {project.tags?.slice(0, 3).map((tag, i) => (
+                                      <span key={i} className="px-2 py-0.5 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 text-xs rounded-full">{tag}</span>
+                                    ))}
+                                  </div>
+                                </div>
+                                <div className="flex items-center gap-2 flex-shrink-0">
+                                  {project.github && (
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                                      className="p-2 text-gray-400 hover:text-gray-700 dark:hover:text-white transition-colors">
+                                      <Github size={16} />
+                                    </a>
+                                  )}
+                                  {project.demo && (
+                                    <a href={project.demo} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}
+                                      className="p-2 text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                                      <ExternalLink size={16} />
+                                    </a>
+                                  )}
+                                  <span className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold rounded-full">Done</span>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {/* Show More / Show Less Button */}
+                      {sortedCompleted.length > INITIAL_SHOW && (
+                        <motion.div className="flex justify-center pt-4">
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              if (showAllCompleted) {
+                                setShowAllCompleted(false);
+                                setTimeout(() => {
+                                  completedSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }, 50);
+                              } else {
+                                setShowAllCompleted(true);
+                              }
+                            }}
+                            className="flex items-center gap-2 px-8 py-3 bg-white dark:bg-dark-800 border-2 border-primary-300 dark:border-primary-700 text-primary-600 dark:text-primary-400 font-semibold rounded-full shadow-sm hover:bg-primary-50 dark:hover:bg-primary-900/20 hover:border-primary-500 transition-all"
+                          >
+                            {showAllCompleted ? (
+                              <><ChevronUp size={18} /> Show Less</>
+                            ) : (
+                              <><ChevronDown size={18} /> Show {completedProjects.length - INITIAL_SHOW} More Projects</>
+                            )}
+                          </motion.button>
+                        </motion.div>
+                      )}
+                     </div>
                   )}
 
                   {/* Ongoing Projects Section */}
